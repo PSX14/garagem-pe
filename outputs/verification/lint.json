@@ -1,0 +1,10 @@
+{
+  "name": "lint",
+  "command": "npm run lint",
+  "exitCode": 0,
+  "startedAt": "2026-09-09T17:21:18.4128741-03:00",
+  "finishedAt": "2026-09-09T17:21:25.6941448-03:00",
+  "durationSeconds": 7.281,
+  "sourceSha256": "630d5895daf7c10a7509f93e9b7c3556f7ea3074a8485aab82b5d7dc21d48031",
+  "log": "outputs/verification/lint.log"
+}

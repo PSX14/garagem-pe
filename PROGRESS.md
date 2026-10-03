@@ -1,0 +1,20 @@
+# Progresso
+
+03/10/2026 — Git inicializado em `main`; 107 arquivos preparados para o primeiro commit. `.gitignore` ampliado para excluir credenciais, arquivos de assinatura e configurações locais. A revisão dos arquivos preparados não encontrou padrões de credenciais nem arquivos acima de 50 MB. Login GitHub autorizado pelo usuário na conta PSX14 e repositório privado criado em `https://github.com/PSX14/garagem-pe`, vinculado como `origin`. GitHub CLI e autenticação local ficam somente em `work/`, excluído do Git. Identidade de commit configurada apenas neste repositório, com e-mail noreply da conta confirmada. Nenhum código do aplicativo alterado nesta preparação.
+
+Atualizado em 09/09/2026.
+
+Preparação posterior para APK: `eas.json`, `.easignore` e `outputs/GERAR-APK.md` adicionados. Perfil preview usa mapa local imediatamente, preservando o modo Expo Go. Quatro testes do mapa, typecheck, lint e 239 verificações estruturais aprovados; bundle com `EXPO_PUBLIC_MAP_MODE=local` exportado em `work/apk-preview-bundle` (774 módulos, 19 assets). A compilação nativa EAS/instalação APK não foi executada e requer login do usuário. Os 164 testes e a execução Android descritos abaixo pertencem à entrega anterior; não foram repetidos integralmente nesta preparação.
+
+
+- Base Expo 57 / React Native 0.86 / React 19.2 instalada. Fluxos nativos de motorista e proprietário, navegação, cadastro em quatro etapas, filtros, mapa/lista, reservas, avaliações, fotos locais e ganhos implementados.
+- PDF e cinco mockups encontrados em `C:\Users\Gabs\Desktop\Organizar\Faculdade\Garagem Pe` e inspecionados integralmente em 09/09/2026. Auditoria, texto extraído, sete renderes e hashes em `work/references/`.
+- Domínio/storage v2: oito vagas demonstrativas, dois veículos, cinco reservas iniciais, perfis separados, disponibilidade Recife, capacidade de pico, autorização, códigos únicos, migração e backup. Complemento do endereço passou a integrar novas reservas; snapshots anteriores preservados.
+- Comissão mantida em 15% incluída no total e repasse de 85%, conforme texto, apesar da taxa adicional desenhada no mockup 3. Até cinco fotos novas, preservando até seis fotos legadas no carregamento.
+- Refinamentos visuais alinham marca pin/P, CTAs laranja, home com mapa, detalhes, confirmação, wizard e painel com gráfico semanal às referências, preservando os requisitos adicionais do texto.
+- Comandos finais aprovados em 09/09/2026: npm ci, check, typecheck, lint, 164 testes em 10 suítes, compatibilidade, Expo Doctor 21/21 e bundle Android. `npm run verify` terminou com saída 0 em 27,127 s. Logs em `outputs/verification/`.
+- Expo Go 57.0.9 no Android 17 / API 37.1: motorista reservou, cancelou reserva futura, registrou chegada/saída e avaliou; proprietário publicou/editou vaga com foto, pausou/reativou anúncio, recebeu a mesma reserva e avaliou motorista. Encerramento forçado/reabertura preservou dados; foto permaneceu após remover a cópia original de teste do emulador.
+- Cinco referências confrontadas com capturas reais; parecer visual aprovado nas áreas examinadas, incluindo correções em 360 dp e fonte 130%. Google Maps apresentou falha de autorização no Expo Go; mapa demonstrativo local com pins clicáveis e lista funcionaram.
+- Reabertura final a frio no Expo Go após o último npm ci aprovada: ExperienceActivity retornou Status ok, interface do proprietário navegável, 4 reservas concluídas e ganhos preservados de R$ 92,00 bruto, R$ 13,80 comissão e R$ 78,20 líquido. Captura `outputs/screenshots/21-reabertura-final-ganhos.png`.
+- Foto do anúncio também carregou após a reabertura final e remoção da imagem de seleção no emulador: captura 22. `outputs/verification/runtime-final.json` registra lista vazia de erros ReactNativeJS/AndroidRuntime/fatais/JavaScript não tratado no novo processo.
+- Relatório com comandos, códigos, valores, capturas e limitação do mapa em `outputs/RELATORIO-VALIDACAO.md`; parecer visual em `outputs/REVISAO-VISUAL.md`. Nenhum código foi alterado na consolidação documental.

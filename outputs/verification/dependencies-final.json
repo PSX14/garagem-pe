@@ -1,0 +1,8 @@
+{
+  "command": "npm run check:dependencies",
+  "startedAt": "2026-09-09T20:23:32.844Z",
+  "finishedAt": "2026-09-09T20:23:33.915Z",
+  "durationSeconds": 1.071,
+  "exitCode": 0,
+  "log": "outputs/verification/dependencies-final.log"
+}

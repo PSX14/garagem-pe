@@ -1,0 +1,18 @@
+{
+  "cli": {
+    "appVersionSource": "local"
+  },
+  "build": {
+    "preview": {
+      "distribution": "internal",
+      "developmentClient": false,
+      "node": "24.19.0",
+      "env": {
+        "EXPO_PUBLIC_MAP_MODE": "local"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    }
+  }
+}

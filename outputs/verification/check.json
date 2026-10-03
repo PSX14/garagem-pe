@@ -1,0 +1,10 @@
+{
+  "name": "check",
+  "command": "npm run check",
+  "exitCode": 0,
+  "startedAt": "2026-09-09T17:21:15.0098025-03:00",
+  "finishedAt": "2026-09-09T17:21:15.8844083-03:00",
+  "durationSeconds": 0.87,
+  "sourceSha256": "630d5895daf7c10a7509f93e9b7c3556f7ea3074a8485aab82b5d7dc21d48031",
+  "log": "outputs/verification/check.log"
+}

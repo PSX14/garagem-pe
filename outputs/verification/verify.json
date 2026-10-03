@@ -1,0 +1,8 @@
+{
+  "command": "npm run verify",
+  "startedAt": "2026-09-09T20:23:37.250Z",
+  "finishedAt": "2026-09-09T20:24:04.377Z",
+  "durationSeconds": 27.127,
+  "exitCode": 0,
+  "log": "outputs/verification/verify.log"
+}

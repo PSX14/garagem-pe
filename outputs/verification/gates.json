@@ -1,0 +1,598 @@
+{
+  "startedAt": "2026-09-09T17:21:14.8468332-03:00",
+  "finishedAt": "2026-09-09T17:21:38.1600296-03:00",
+  "workingDirectory": "C:\\Users\\Gabs\\Documents\\Codex\\2026-09-04\\goal-entregar-no-reposit-rio-atual",
+  "sourceUnchanged": true,
+  "sourceBefore": {
+    "sha256": "630d5895daf7c10a7509f93e9b7c3556f7ea3074a8485aab82b5d7dc21d48031",
+    "files": [
+      {
+        "path": "app.json",
+        "sha256": "35e15da35cb92c6af9970a6b6d9d0237aeeb0fb8378984145099ca26424ca60a"
+      },
+      {
+        "path": "App.tsx",
+        "sha256": "ad863ad8f7b51e192a434140173c74857532340ff6abce0856ec5b90340d01d6"
+      },
+      {
+        "path": "eslint.config.js",
+        "sha256": "02cc5428c7fe322a61ed2a683820746515cd572d1ba865ac2de8e749ec528efb"
+      },
+      {
+        "path": "index.ts",
+        "sha256": "af10e01cf5fa6d399a83829926cc80d935c1dca8fb01313ab7cb54aab84c028b"
+      },
+      {
+        "path": "jest.config.js",
+        "sha256": "afe8055ef258e692135b4bbc9691700dfe694794a4319f71778ed07c4390f421"
+      },
+      {
+        "path": "jest.setup.js",
+        "sha256": "41a22cf21664877a933b51bb8c0633c9edb6f2a1b47577f67292b6c8f90cd589"
+      },
+      {
+        "path": "node_modules\\.package-lock.json",
+        "sha256": "e6c311a91971e8c617f3ba2e5324e8c6867729305c3c2a370d029d5904ffab7a"
+      },
+      {
+        "path": "node_modules\\decimal.js\\decimal.d.ts",
+        "sha256": "e6cfcf171b5f7ec0cb620eee4669739ad2711597d0ff7fdb79298dfc1118e66a"
+      },
+      {
+        "path": "node_modules\\decimal.js\\decimal.js",
+        "sha256": "6e99821f8204c5f611b56077e3fce056a1562d22bc341a1f4af01afe7e527d83"
+      },
+      {
+        "path": "node_modules\\decimal.js\\decimal.mjs",
+        "sha256": "45e6ecc0a500fee6439acdf67ee2e9322aab57e6ea0409ef52993dedbba8cf19"
+      },
+      {
+        "path": "node_modules\\decimal.js\\package.json",
+        "sha256": "d7e3794828ee8bc94818613c9d901a9e7c857e6ffcf027245e661ddfc63d9b72"
+      },
+      {
+        "path": "package-lock.json",
+        "sha256": "eef66547e6b5c837e12f28a240d338ae9867b525595f146787e9aea35b7a3c57"
+      },
+      {
+        "path": "package.json",
+        "sha256": "f57537894880b8013f53fb1e7aae7c34b26d7d94f916ed62da51d46c15f2679e"
+      },
+      {
+        "path": "scripts\\check-project.cjs",
+        "sha256": "188f37849043b908b34fcc93daba2d01f678965d32c28be4ab9a17b10447fb54"
+      },
+      {
+        "path": "src\\domain\\availability.ts",
+        "sha256": "0722d55b1bc88eff5c60059d15eec87711ad6b3205a09d30d17335829fd34176"
+      },
+      {
+        "path": "src\\domain\\filters.ts",
+        "sha256": "8fdd0d9ea0444f59f4594522b9776aba23ff9055db0dba910c4ca421c3f78c18"
+      },
+      {
+        "path": "src\\domain\\model.test.ts",
+        "sha256": "1af51b17da71c93d1f2566e31de3a3db803e4eccae5d63cf34cbb8ed4947d8e9"
+      },
+      {
+        "path": "src\\domain\\model.ts",
+        "sha256": "1b50bfb607e4ea44cc97773e7576266bc8e2bb115bf2e61bf5184dd64cba124e"
+      },
+      {
+        "path": "src\\domain\\pricing.ts",
+        "sha256": "0a13876ffcbf2b16b7a5d68d9bf32c05dd230df04847211e65c2cad22fdc5842"
+      },
+      {
+        "path": "src\\domain\\seeds.ts",
+        "sha256": "407d9901629596ac1394a77d4992fa9ba93ca17771cfed27fd653fb1fd30424f"
+      },
+      {
+        "path": "src\\domain\\types.ts",
+        "sha256": "bfa7a055d3147d4b708f1f25cea2811ca07d37f202d383d6f286a0b65525cb35"
+      },
+      {
+        "path": "src\\domain\\validation.ts",
+        "sha256": "6ac8c619695517f7a3beb1b72fac8c44a60b86f3241a2e28328b72965d34c496"
+      },
+      {
+        "path": "src\\screens\\driver\\BookingForm.tsx",
+        "sha256": "71dd1d85f6cdf1bf24042ac806a85507af94bef44e6dff4080f523ed20b50904"
+      },
+      {
+        "path": "src\\screens\\driver\\Bookings.tsx",
+        "sha256": "d7c86d63afe37e17188aac5fcee34d0ff8b74b280b8968b0a50bbd94ca4b24a3"
+      },
+      {
+        "path": "src\\screens\\driver\\dateTime.ts",
+        "sha256": "360c8ae44cb471c258f70407b8d0821360ffeb4d9b556f2b73ebfa3720ed67d1"
+      },
+      {
+        "path": "src\\screens\\driver\\DriverScreens.test.tsx",
+        "sha256": "2fabffc9e6802099e9fd3e870cc0d15da3eb8c8d506d1a030676f434f69afddf"
+      },
+      {
+        "path": "src\\screens\\driver\\ExploreScreen.tsx",
+        "sha256": "a4da603d7daf996b9b4a448c9477266c1d26cb7cfd142b5820b86eb1a92f1c74"
+      },
+      {
+        "path": "src\\screens\\driver\\GarageDetail.tsx",
+        "sha256": "4a5def178886d6ccfbad89e0f20f1e5822660eba4da0fc4701dfe6053d6d0c56"
+      },
+      {
+        "path": "src\\screens\\driver\\GarageMap.test.tsx",
+        "sha256": "ee093ba4ac049ad6194901513e0c8a944ee95066def1ea70d8f244be7f82ee80"
+      },
+      {
+        "path": "src\\screens\\driver\\GarageMap.tsx",
+        "sha256": "c9805e6cc3c210ced1a05ad50a614411e13dc7f59656036e9da6675e727a5007"
+      },
+      {
+        "path": "src\\screens\\driver\\OfflineGarageMap.tsx",
+        "sha256": "53d0a28b3a2fc829792e67e07795d84a17cf5c396dfd702c78d2e620935f2908"
+      },
+      {
+        "path": "src\\screens\\driver\\SearchFiltersPanel.tsx",
+        "sha256": "2aad31a8283ed7ba47c30270122101e648d05f6f4e4b01c2abc915d8423de5fc"
+      },
+      {
+        "path": "src\\screens\\driver\\shared.tsx",
+        "sha256": "0d1deda831b513fb721e837a11acb30308d0465ba10e9ccff9ed4c565bb1cfdc"
+      },
+      {
+        "path": "src\\screens\\DriverScreens.tsx",
+        "sha256": "9db71f2d2bce303bbc3d84cda587bc3ee8eaaeb34aaefe0b33d6f3c0e4fd961a"
+      },
+      {
+        "path": "src\\screens\\owner\\EarningsScreen.tsx",
+        "sha256": "6c6ddf5f49440415f9e6d250c10152920fd70a8a3a51e8e918fd7c3114006300"
+      },
+      {
+        "path": "src\\screens\\owner\\GarageEditor.test.tsx",
+        "sha256": "eb2e9965affc0979c35aa859ed301659e7a4a81238e8cf44d15e1126e725628d"
+      },
+      {
+        "path": "src\\screens\\owner\\GarageEditor.tsx",
+        "sha256": "06c8e305700cf094c964b51072e35ef51934d46cdc2fb81585cf1689e2420aa8"
+      },
+      {
+        "path": "src\\screens\\owner\\garageForm.ts",
+        "sha256": "12adeebee6001821ce5f3293b8bd7b7336092c16c4529e718e4edcd5c2df8b76"
+      },
+      {
+        "path": "src\\screens\\owner\\GarageFormSections.tsx",
+        "sha256": "f15cd8466870006a80cfda6b3af22ab77595349474a9a8ace2bd521148d089f3"
+      },
+      {
+        "path": "src\\screens\\owner\\GarageWizard.tsx",
+        "sha256": "50298f67d0b69b46e19f280974bc730581d981469b61d599e343baebc6e6f35e"
+      },
+      {
+        "path": "src\\screens\\owner\\ownerAnalytics.test.ts",
+        "sha256": "f633f8228d47204629b13a17edd956173c1cb884ebb28042711326b4769e9a5d"
+      },
+      {
+        "path": "src\\screens\\owner\\ownerAnalytics.ts",
+        "sha256": "c1f13ba1c405feadb83b7430acd7d5b8ae80109de2e676d5ed8b02a5171d0606"
+      },
+      {
+        "path": "src\\screens\\owner\\OwnerBookings.tsx",
+        "sha256": "c07b012a8542afb5a42a67d0e80e2d258ef1a4a5955d4ebb53b1a3b1255f2e28"
+      },
+      {
+        "path": "src\\screens\\owner\\OwnerDashboard.tsx",
+        "sha256": "789560c91f6b872736207b342a35afcc906210f1acc8d5ca2c3399189573994d"
+      },
+      {
+        "path": "src\\screens\\owner\\OwnerGarages.tsx",
+        "sha256": "db3ee113d891c58db85fb217b949cf297aa04f6679f396cf05896496d8cf1b3c"
+      },
+      {
+        "path": "src\\screens\\owner\\OwnerHistory.test.tsx",
+        "sha256": "31e53fde12d559ee0dbdf0bbce9235aaacbdfbbe14ce2defebef015eaa8616c6"
+      },
+      {
+        "path": "src\\screens\\owner\\OwnerLayout.tsx",
+        "sha256": "c8ede4ef2ee1ce68854f9b555cf539353d8abf8e80a653079d2201fb24709337"
+      },
+      {
+        "path": "src\\screens\\owner\\OwnerShared.tsx",
+        "sha256": "2356fba6ba3c504d09fdc97f9f9f70179cb13ac06a1acab07bf8d1a65ed0b80d"
+      },
+      {
+        "path": "src\\screens\\owner\\photos.test.ts",
+        "sha256": "91d2c6d36422fd59495a87e0e4e007b0dcbafc9e7d600aaa640eca7d5464748b"
+      },
+      {
+        "path": "src\\screens\\owner\\useGarageActivation.ts",
+        "sha256": "4cf1a61a0d805e9a25560681955f56f23d28e5cef8a22d464509636294967fd9"
+      },
+      {
+        "path": "src\\screens\\OwnerScreens.tsx",
+        "sha256": "e61c9ab36b1ea731544b74fd68c3342af86557854d87ecf8aa2b8eb788d5a1e2"
+      },
+      {
+        "path": "src\\screens\\ProfileScreen.tsx",
+        "sha256": "9335f64548cfdc04557f88519fc03088f3666495dd439e1177dcbdbcf821892d"
+      },
+      {
+        "path": "src\\screens\\WelcomeScreen.tsx",
+        "sha256": "a9968118e7fb7baa5cdb596c1b83622b0a06f8d6c7049a45057f10b443575df4"
+      },
+      {
+        "path": "src\\services\\location.ts",
+        "sha256": "352ffa068952df62d40273ce1fbfa33afb1c5a71fbca07f1d9841ffae3ea41d8"
+      },
+      {
+        "path": "src\\services\\photos.ts",
+        "sha256": "856fddc555eaf7420de55db20f3a61c472318e4dd9890de3830e9a3953382ebc"
+      },
+      {
+        "path": "src\\state\\AppProvider.test.tsx",
+        "sha256": "9a5593fd4b7c8efd8dd3319f606be6c26b141d1db49ace4af56d8182608426fd"
+      },
+      {
+        "path": "src\\state\\AppProvider.tsx",
+        "sha256": "336aadb02a7975c27aa19fb3e8bd7e3c02ae89e0aae7f5dfda742143ea51491b"
+      },
+      {
+        "path": "src\\state\\persistence.test.ts",
+        "sha256": "f576bc2b122df2a1475a85f0bae500b766a957f025f3fbedd5b7391ffc327527"
+      },
+      {
+        "path": "src\\state\\persistence.ts",
+        "sha256": "71d36e7c5b95659a1fa7512fa489bdcb4dc14bba08f05f92421a66b8055021a9"
+      },
+      {
+        "path": "src\\ui\\components.test.tsx",
+        "sha256": "32fab6180fcc1b9e7db15e7f0996f138298f6fe0edfe7ecf82831988a894e2b5"
+      },
+      {
+        "path": "src\\ui\\components.tsx",
+        "sha256": "72224df5d2bfadc3f961f50e3b84adbc7ff4bd3591dbce9f4867c962d84dedc0"
+      },
+      {
+        "path": "src\\ui\\theme.ts",
+        "sha256": "84872bf2f8f2fb0737eec65ae44042bcea5fd6dc179e9a5cfc348a386f3ef8d3"
+      },
+      {
+        "path": "tsconfig.json",
+        "sha256": "90f06a776b42baad3aeac4f227351887bb9cecf056dbc1fb437f7a5e21661b8e"
+      },
+      {
+        "path": "work\\owner-audit-jest.json",
+        "sha256": "009a7d97feeeddcce433bdad01a0a79d546446b7691501c487ba4c10a735bc7b"
+      },
+      {
+        "path": "work\\owner-final-audit-jest.json",
+        "sha256": "798851999a6f77fb0886da79b68ca92944dec61ccdccc1003e8dea7447416eae"
+      }
+    ]
+  },
+  "sourceAfter": {
+    "sha256": "630d5895daf7c10a7509f93e9b7c3556f7ea3074a8485aab82b5d7dc21d48031",
+    "files": [
+      {
+        "path": "app.json",
+        "sha256": "35e15da35cb92c6af9970a6b6d9d0237aeeb0fb8378984145099ca26424ca60a"
+      },
+      {
+        "path": "App.tsx",
+        "sha256": "ad863ad8f7b51e192a434140173c74857532340ff6abce0856ec5b90340d01d6"
+      },
+      {
+        "path": "eslint.config.js",
+        "sha256": "02cc5428c7fe322a61ed2a683820746515cd572d1ba865ac2de8e749ec528efb"
+      },
+      {
+        "path": "index.ts",
+        "sha256": "af10e01cf5fa6d399a83829926cc80d935c1dca8fb01313ab7cb54aab84c028b"
+      },
+      {
+        "path": "jest.config.js",
+        "sha256": "afe8055ef258e692135b4bbc9691700dfe694794a4319f71778ed07c4390f421"
+      },
+      {
+        "path": "jest.setup.js",
+        "sha256": "41a22cf21664877a933b51bb8c0633c9edb6f2a1b47577f67292b6c8f90cd589"
+      },
+      {
+        "path": "node_modules\\.package-lock.json",
+        "sha256": "e6c311a91971e8c617f3ba2e5324e8c6867729305c3c2a370d029d5904ffab7a"
+      },
+      {
+        "path": "node_modules\\decimal.js\\decimal.d.ts",
+        "sha256": "e6cfcf171b5f7ec0cb620eee4669739ad2711597d0ff7fdb79298dfc1118e66a"
+      },
+      {
+        "path": "node_modules\\decimal.js\\decimal.js",
+        "sha256": "6e99821f8204c5f611b56077e3fce056a1562d22bc341a1f4af01afe7e527d83"
+      },
+      {
+        "path": "node_modules\\decimal.js\\decimal.mjs",
+        "sha256": "45e6ecc0a500fee6439acdf67ee2e9322aab57e6ea0409ef52993dedbba8cf19"
+      },
+      {
+        "path": "node_modules\\decimal.js\\package.json",
+        "sha256": "d7e3794828ee8bc94818613c9d901a9e7c857e6ffcf027245e661ddfc63d9b72"
+      },
+      {
+        "path": "package-lock.json",
+        "sha256": "eef66547e6b5c837e12f28a240d338ae9867b525595f146787e9aea35b7a3c57"
+      },
+      {
+        "path": "package.json",
+        "sha256": "f57537894880b8013f53fb1e7aae7c34b26d7d94f916ed62da51d46c15f2679e"
+      },
+      {
+        "path": "scripts\\check-project.cjs",
+        "sha256": "188f37849043b908b34fcc93daba2d01f678965d32c28be4ab9a17b10447fb54"
+      },
+      {
+        "path": "src\\domain\\availability.ts",
+        "sha256": "0722d55b1bc88eff5c60059d15eec87711ad6b3205a09d30d17335829fd34176"
+      },
+      {
+        "path": "src\\domain\\filters.ts",
+        "sha256": "8fdd0d9ea0444f59f4594522b9776aba23ff9055db0dba910c4ca421c3f78c18"
+      },
+      {
+        "path": "src\\domain\\model.test.ts",
+        "sha256": "1af51b17da71c93d1f2566e31de3a3db803e4eccae5d63cf34cbb8ed4947d8e9"
+      },
+      {
+        "path": "src\\domain\\model.ts",
+        "sha256": "1b50bfb607e4ea44cc97773e7576266bc8e2bb115bf2e61bf5184dd64cba124e"
+      },
+      {
+        "path": "src\\domain\\pricing.ts",
+        "sha256": "0a13876ffcbf2b16b7a5d68d9bf32c05dd230df04847211e65c2cad22fdc5842"
+      },
+      {
+        "path": "src\\domain\\seeds.ts",
+        "sha256": "407d9901629596ac1394a77d4992fa9ba93ca17771cfed27fd653fb1fd30424f"
+      },
+      {
+        "path": "src\\domain\\types.ts",
+        "sha256": "bfa7a055d3147d4b708f1f25cea2811ca07d37f202d383d6f286a0b65525cb35"
+      },
+      {
+        "path": "src\\domain\\validation.ts",
+        "sha256": "6ac8c619695517f7a3beb1b72fac8c44a60b86f3241a2e28328b72965d34c496"
+      },
+      {
+        "path": "src\\screens\\driver\\BookingForm.tsx",
+        "sha256": "71dd1d85f6cdf1bf24042ac806a85507af94bef44e6dff4080f523ed20b50904"
+      },
+      {
+        "path": "src\\screens\\driver\\Bookings.tsx",
+        "sha256": "d7c86d63afe37e17188aac5fcee34d0ff8b74b280b8968b0a50bbd94ca4b24a3"
+      },
+      {
+        "path": "src\\screens\\driver\\dateTime.ts",
+        "sha256": "360c8ae44cb471c258f70407b8d0821360ffeb4d9b556f2b73ebfa3720ed67d1"
+      },
+      {
+        "path": "src\\screens\\driver\\DriverScreens.test.tsx",
+        "sha256": "2fabffc9e6802099e9fd3e870cc0d15da3eb8c8d506d1a030676f434f69afddf"
+      },
+      {
+        "path": "src\\screens\\driver\\ExploreScreen.tsx",
+        "sha256": "a4da603d7daf996b9b4a448c9477266c1d26cb7cfd142b5820b86eb1a92f1c74"
+      },
+      {
+        "path": "src\\screens\\driver\\GarageDetail.tsx",
+        "sha256": "4a5def178886d6ccfbad89e0f20f1e5822660eba4da0fc4701dfe6053d6d0c56"
+      },
+      {
+        "path": "src\\screens\\driver\\GarageMap.test.tsx",
+        "sha256": "ee093ba4ac049ad6194901513e0c8a944ee95066def1ea70d8f244be7f82ee80"
+      },
+      {
+        "path": "src\\screens\\driver\\GarageMap.tsx",
+        "sha256": "c9805e6cc3c210ced1a05ad50a614411e13dc7f59656036e9da6675e727a5007"
+      },
+      {
+        "path": "src\\screens\\driver\\OfflineGarageMap.tsx",
+        "sha256": "53d0a28b3a2fc829792e67e07795d84a17cf5c396dfd702c78d2e620935f2908"
+      },
+      {
+        "path": "src\\screens\\driver\\SearchFiltersPanel.tsx",
+        "sha256": "2aad31a8283ed7ba47c30270122101e648d05f6f4e4b01c2abc915d8423de5fc"
+      },
+      {
+        "path": "src\\screens\\driver\\shared.tsx",
+        "sha256": "0d1deda831b513fb721e837a11acb30308d0465ba10e9ccff9ed4c565bb1cfdc"
+      },
+      {
+        "path": "src\\screens\\DriverScreens.tsx",
+        "sha256": "9db71f2d2bce303bbc3d84cda587bc3ee8eaaeb34aaefe0b33d6f3c0e4fd961a"
+      },
+      {
+        "path": "src\\screens\\owner\\EarningsScreen.tsx",
+        "sha256": "6c6ddf5f49440415f9e6d250c10152920fd70a8a3a51e8e918fd7c3114006300"
+      },
+      {
+        "path": "src\\screens\\owner\\GarageEditor.test.tsx",
+        "sha256": "eb2e9965affc0979c35aa859ed301659e7a4a81238e8cf44d15e1126e725628d"
+      },
+      {
+        "path": "src\\screens\\owner\\GarageEditor.tsx",
+        "sha256": "06c8e305700cf094c964b51072e35ef51934d46cdc2fb81585cf1689e2420aa8"
+      },
+      {
+        "path": "src\\screens\\owner\\garageForm.ts",
+        "sha256": "12adeebee6001821ce5f3293b8bd7b7336092c16c4529e718e4edcd5c2df8b76"
+      },
+      {
+        "path": "src\\screens\\owner\\GarageFormSections.tsx",
+        "sha256": "f15cd8466870006a80cfda6b3af22ab77595349474a9a8ace2bd521148d089f3"
+      },
+      {
+        "path": "src\\screens\\owner\\GarageWizard.tsx",
+        "sha256": "50298f67d0b69b46e19f280974bc730581d981469b61d599e343baebc6e6f35e"
+      },
+      {
+        "path": "src\\screens\\owner\\ownerAnalytics.test.ts",
+        "sha256": "f633f8228d47204629b13a17edd956173c1cb884ebb28042711326b4769e9a5d"
+      },
+      {
+        "path": "src\\screens\\owner\\ownerAnalytics.ts",
+        "sha256": "c1f13ba1c405feadb83b7430acd7d5b8ae80109de2e676d5ed8b02a5171d0606"
+      },
+      {
+        "path": "src\\screens\\owner\\OwnerBookings.tsx",
+        "sha256": "c07b012a8542afb5a42a67d0e80e2d258ef1a4a5955d4ebb53b1a3b1255f2e28"
+      },
+      {
+        "path": "src\\screens\\owner\\OwnerDashboard.tsx",
+        "sha256": "789560c91f6b872736207b342a35afcc906210f1acc8d5ca2c3399189573994d"
+      },
+      {
+        "path": "src\\screens\\owner\\OwnerGarages.tsx",
+        "sha256": "db3ee113d891c58db85fb217b949cf297aa04f6679f396cf05896496d8cf1b3c"
+      },
+      {
+        "path": "src\\screens\\owner\\OwnerHistory.test.tsx",
+        "sha256": "31e53fde12d559ee0dbdf0bbce9235aaacbdfbbe14ce2defebef015eaa8616c6"
+      },
+      {
+        "path": "src\\screens\\owner\\OwnerLayout.tsx",
+        "sha256": "c8ede4ef2ee1ce68854f9b555cf539353d8abf8e80a653079d2201fb24709337"
+      },
+      {
+        "path": "src\\screens\\owner\\OwnerShared.tsx",
+        "sha256": "2356fba6ba3c504d09fdc97f9f9f70179cb13ac06a1acab07bf8d1a65ed0b80d"
+      },
+      {
+        "path": "src\\screens\\owner\\photos.test.ts",
+        "sha256": "91d2c6d36422fd59495a87e0e4e007b0dcbafc9e7d600aaa640eca7d5464748b"
+      },
+      {
+        "path": "src\\screens\\owner\\useGarageActivation.ts",
+        "sha256": "4cf1a61a0d805e9a25560681955f56f23d28e5cef8a22d464509636294967fd9"
+      },
+      {
+        "path": "src\\screens\\OwnerScreens.tsx",
+        "sha256": "e61c9ab36b1ea731544b74fd68c3342af86557854d87ecf8aa2b8eb788d5a1e2"
+      },
+      {
+        "path": "src\\screens\\ProfileScreen.tsx",
+        "sha256": "9335f64548cfdc04557f88519fc03088f3666495dd439e1177dcbdbcf821892d"
+      },
+      {
+        "path": "src\\screens\\WelcomeScreen.tsx",
+        "sha256": "a9968118e7fb7baa5cdb596c1b83622b0a06f8d6c7049a45057f10b443575df4"
+      },
+      {
+        "path": "src\\services\\location.ts",
+        "sha256": "352ffa068952df62d40273ce1fbfa33afb1c5a71fbca07f1d9841ffae3ea41d8"
+      },
+      {
+        "path": "src\\services\\photos.ts",
+        "sha256": "856fddc555eaf7420de55db20f3a61c472318e4dd9890de3830e9a3953382ebc"
+      },
+      {
+        "path": "src\\state\\AppProvider.test.tsx",
+        "sha256": "9a5593fd4b7c8efd8dd3319f606be6c26b141d1db49ace4af56d8182608426fd"
+      },
+      {
+        "path": "src\\state\\AppProvider.tsx",
+        "sha256": "336aadb02a7975c27aa19fb3e8bd7e3c02ae89e0aae7f5dfda742143ea51491b"
+      },
+      {
+        "path": "src\\state\\persistence.test.ts",
+        "sha256": "f576bc2b122df2a1475a85f0bae500b766a957f025f3fbedd5b7391ffc327527"
+      },
+      {
+        "path": "src\\state\\persistence.ts",
+        "sha256": "71d36e7c5b95659a1fa7512fa489bdcb4dc14bba08f05f92421a66b8055021a9"
+      },
+      {
+        "path": "src\\ui\\components.test.tsx",
+        "sha256": "32fab6180fcc1b9e7db15e7f0996f138298f6fe0edfe7ecf82831988a894e2b5"
+      },
+      {
+        "path": "src\\ui\\components.tsx",
+        "sha256": "72224df5d2bfadc3f961f50e3b84adbc7ff4bd3591dbce9f4867c962d84dedc0"
+      },
+      {
+        "path": "src\\ui\\theme.ts",
+        "sha256": "84872bf2f8f2fb0737eec65ae44042bcea5fd6dc179e9a5cfc348a386f3ef8d3"
+      },
+      {
+        "path": "tsconfig.json",
+        "sha256": "90f06a776b42baad3aeac4f227351887bb9cecf056dbc1fb437f7a5e21661b8e"
+      },
+      {
+        "path": "work\\owner-audit-jest.json",
+        "sha256": "009a7d97feeeddcce433bdad01a0a79d546446b7691501c487ba4c10a735bc7b"
+      },
+      {
+        "path": "work\\owner-final-audit-jest.json",
+        "sha256": "798851999a6f77fb0886da79b68ca92944dec61ccdccc1003e8dea7447416eae"
+      }
+    ]
+  },
+  "results": [
+    {
+      "name": "check",
+      "command": "npm run check",
+      "exitCode": 0,
+      "startedAt": "2026-09-09T17:21:15.0098025-03:00",
+      "finishedAt": "2026-09-09T17:21:15.8844083-03:00",
+      "durationSeconds": 0.87,
+      "sourceSha256": "630d5895daf7c10a7509f93e9b7c3556f7ea3074a8485aab82b5d7dc21d48031",
+      "log": "outputs/verification/check.log"
+    },
+    {
+      "name": "typecheck",
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "startedAt": "2026-09-09T17:21:15.9314118-03:00",
+      "finishedAt": "2026-09-09T17:21:18.4081867-03:00",
+      "durationSeconds": 2.477,
+      "sourceSha256": "630d5895daf7c10a7509f93e9b7c3556f7ea3074a8485aab82b5d7dc21d48031",
+      "log": "outputs/verification/typecheck.log"
+    },
+    {
+      "name": "lint",
+      "command": "npm run lint",
+      "exitCode": 0,
+      "startedAt": "2026-09-09T17:21:18.4128741-03:00",
+      "finishedAt": "2026-09-09T17:21:25.6941448-03:00",
+      "durationSeconds": 7.281,
+      "sourceSha256": "630d5895daf7c10a7509f93e9b7c3556f7ea3074a8485aab82b5d7dc21d48031",
+      "log": "outputs/verification/lint.log"
+    },
+    {
+      "name": "tests",
+      "command": "npm test -- --json --outputFile=outputs/verification/jest-results.json",
+      "exitCode": 0,
+      "startedAt": "2026-09-09T17:21:25.6970880-03:00",
+      "finishedAt": "2026-09-09T17:21:33.2679785-03:00",
+      "durationSeconds": 7.571,
+      "sourceSha256": "630d5895daf7c10a7509f93e9b7c3556f7ea3074a8485aab82b5d7dc21d48031",
+      "log": "outputs/verification/tests.log"
+    },
+    {
+      "name": "dependencies",
+      "command": "npm run check:dependencies",
+      "exitCode": 1,
+      "startedAt": "2026-09-09T17:21:33.2707196-03:00",
+      "finishedAt": "2026-09-09T17:21:34.0660818-03:00",
+      "durationSeconds": 0.795,
+      "sourceSha256": "630d5895daf7c10a7509f93e9b7c3556f7ea3074a8485aab82b5d7dc21d48031",
+      "log": "outputs/verification/dependencies.log"
+    },
+    {
+      "name": "doctor",
+      "command": "npm run doctor",
+      "exitCode": 1,
+      "startedAt": "2026-09-09T17:21:34.0683216-03:00",
+      "finishedAt": "2026-09-09T17:21:38.1193497-03:00",
+      "durationSeconds": 4.051,
+      "sourceSha256": "630d5895daf7c10a7509f93e9b7c3556f7ea3074a8485aab82b5d7dc21d48031",
+      "log": "outputs/verification/doctor.log"
+    }
+  ]
+}

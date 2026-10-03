@@ -1,0 +1,52 @@
+{
+  "expo": {
+    "name": "Garagem PE",
+    "slug": "garagem-pe",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "platforms": [
+      "android",
+      "ios"
+    ],
+    "scheme": "garagempe",
+    "android": {
+      "package": "br.com.garagempe.app",
+      "softwareKeyboardLayoutMode": "resize",
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "assetBundlePatterns": [
+      "assets/**/*"
+    ],
+    "plugins": [
+      "@react-native-community/datetimepicker",
+      "expo-font",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Permita que o Garagem PE mostre vagas próximas. Você também pode escolher um bairro."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": false,
+          "photosPermission": "Escolha fotos do seu espaço para o anúncio local.",
+          "microphonePermission": false
+        }
+      ],
+      "expo-asset"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "af9a7568-e6da-4350-aa6c-73dd67dd24b3"
+      }
+    }
+  }
+}

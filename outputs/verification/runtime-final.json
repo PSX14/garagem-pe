@@ -1,0 +1,8 @@
+{
+  "observedAt": "2026-09-09T20:29:40.619Z",
+  "expoGoPid": "20923",
+  "launch": "COLD ExperienceActivity Status ok after npm ci",
+  "observedScreen": "Ganhos: 4 completed bookings, gross 9200 cents, fee 1380 cents, net 7820 cents",
+  "applicationErrors": [],
+  "scope": "Fresh Expo Go process log: ReactNativeJS error, AndroidRuntime error, fatal and unhandled JavaScript exceptions. Google Maps base authorization limitation documented separately."
+}

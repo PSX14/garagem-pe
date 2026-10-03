@@ -1,0 +1,13 @@
+node_modules/
+.expo/
+.git/
+.agents/
+.codex/
+work/
+outputs/
+coverage/
+*.log
+.DS_Store
+credentials.json
+*.jks
+*.keystore

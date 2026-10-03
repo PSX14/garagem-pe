@@ -1,0 +1,47 @@
+{
+  "name": "garagem-pe",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start --go",
+    "android": "expo start --go --android",
+    "check": "node scripts/check-project.cjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --max-warnings=0",
+    "test": "jest --runInBand",
+    "test:coverage": "jest --runInBand --coverage",
+    "doctor": "expo-doctor",
+    "check:dependencies": "expo install --check",
+    "bundle:android": "expo export --platform android --output-dir outputs/android-bundle",
+    "verify": "npm run check && npm run typecheck && npm run lint && npm test && npm run check:dependencies && npm run doctor && npm run bundle:android"
+  },
+  "dependencies": {
+    "@expo/vector-icons": "^15.0.2",
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@react-native-community/datetimepicker": "9.1.0",
+    "expo": "~57.0.21",
+    "expo-asset": "~57.0.16",
+    "expo-file-system": "~57.0.6",
+    "expo-font": "~57.0.3",
+    "expo-image-picker": "~57.0.16",
+    "expo-location": "~57.0.16",
+    "expo-status-bar": "~57.0.1",
+    "react": "19.2.3",
+    "react-native": "0.86.3",
+    "react-native-maps": "1.27.2",
+    "react-native-safe-area-context": "~5.7.0"
+  },
+  "devDependencies": {
+    "typescript": "~6.0.3",
+    "@types/react": "~19.2.2",
+    "@types/jest": "^29.5.14",
+    "jest": "^29.7.0",
+    "jest-expo": "~57.0.5",
+    "eslint": "^9.39.0",
+    "eslint-config-expo": "~57.0.2",
+    "expo-doctor": "1.20.4",
+    "@testing-library/react-native": "^13.3.3",
+    "react-test-renderer": "19.2.3"
+  }
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "command": "npm ci",
+    "startedAt": "2026-09-09T20:23:06.399Z",
+    "finishedAt": "2026-09-09T20:23:32.843Z",
+    "durationSeconds": 26.441,
+    "exitCode": 0,
+    "log": "outputs/verification/install.log"
+  },
+  {
+    "command": "npm run check:dependencies",
+    "startedAt": "2026-09-09T20:23:32.844Z",
+    "finishedAt": "2026-09-09T20:23:33.915Z",
+    "durationSeconds": 1.071,
+    "exitCode": 0,
+    "log": "outputs/verification/dependencies-final.log"
+  },
+  {
+    "command": "npm run doctor",
+    "startedAt": "2026-09-09T20:23:33.916Z",
+    "finishedAt": "2026-09-09T20:23:37.249Z",
+    "durationSeconds": 3.333,
+    "exitCode": 0,
+    "log": "outputs/verification/doctor-final.log"
+  },
+  {
+    "command": "npm run verify",
+    "startedAt": "2026-09-09T20:23:37.250Z",
+    "finishedAt": "2026-09-09T20:24:04.377Z",
+    "durationSeconds": 27.127,
+    "exitCode": 0,
+    "log": "outputs/verification/verify.log"
+  }
+]

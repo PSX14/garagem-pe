@@ -1,0 +1,8 @@
+{
+  "command": "npm ci",
+  "startedAt": "2026-09-09T20:23:06.399Z",
+  "finishedAt": "2026-09-09T20:23:32.843Z",
+  "durationSeconds": 26.441,
+  "exitCode": 0,
+  "log": "outputs/verification/install.log"
+}
