@@ -1,5 +1,7 @@
 # Progresso
 
+03/10/2026 — Publicação concluída em `https://github.com/PSX14/garagem-pe` (privado). Primeiro commit `94b68e4` enviado para `main`, com acompanhamento de `origin/main`; SHA local e remoto iguais e 107 arquivos confirmados pela API GitHub. Caches, dependências instaladas e autenticação local ficaram excluídos. Transporte Git ajustado apenas neste repositório para OpenSSL/HTTP 1.1, mantendo a verificação TLS, após falha do Schannel e uma tentativa de envio interrompida. Nenhuma alteração funcional no aplicativo.
+
 03/10/2026 — Git inicializado em `main`; 107 arquivos preparados para o primeiro commit. `.gitignore` ampliado para excluir credenciais, arquivos de assinatura e configurações locais. A revisão dos arquivos preparados não encontrou padrões de credenciais nem arquivos acima de 50 MB. Login GitHub autorizado pelo usuário na conta PSX14 e repositório privado criado em `https://github.com/PSX14/garagem-pe`, vinculado como `origin`. GitHub CLI e autenticação local ficam somente em `work/`, excluído do Git. Identidade de commit configurada apenas neste repositório, com e-mail noreply da conta confirmada. Nenhum código do aplicativo alterado nesta preparação.
 
 Atualizado em 09/09/2026.

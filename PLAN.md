@@ -5,7 +5,7 @@ O diretório começou vazio. A base Expo SDK 57 foi instalada diretamente aqui. 
 
 ## Implementação
 
-Publicação GitHub (03/10/2026): repositório local inicializado em `main`, arquivos preparados com exclusão de caches e credenciais e login GitHub autorizado pelo usuário. Repositório privado criado em `https://github.com/PSX14/garagem-pe`, vinculado como `origin`. Usar a identidade GitHub confirmada e o e-mail noreply nos commits. Concluir o envio de `main` e conferir que o commit remoto coincide com o local.
+Publicação GitHub concluída (03/10/2026): repositório privado `https://github.com/PSX14/garagem-pe`, vinculado como `origin`, com `main` enviada e acompanhando `origin/main`. O primeiro commit `94b68e4` foi conferido pela API do GitHub e coincide com o local; 107 arquivos recebidos, sem `work/`, `node_modules/` ou `.expo/`. Identidade GitHub confirmada e e-mail noreply usados nos commits. A configuração de autenticação e transporte foi limitada a este repositório.
 
 Preparação adicional solicitada após a entrega: perfil EAS `preview` para APK, distribuição interna, Node 24.19.0 e `EXPO_PUBLIC_MAP_MODE=local`; `.easignore` exclui temporários, entregáveis e arquivos de assinatura. O componente não monta Google Maps nesse perfil sem chave própria. Instruções PowerShell em `outputs/GERAR-APK.md`, com login Expo e raiz explícita via `EAS_PROJECT_ROOT`. A preparação local está concluída; gerar e instalar o APK depende da execução desses comandos na conta Expo do usuário. Isso não altera o fechamento anterior do objetivo Expo Go.
 
