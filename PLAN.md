@@ -5,6 +5,8 @@ O diretório começou vazio. A base Expo SDK 57 foi instalada diretamente aqui. 
 
 ## Implementação
 
+Checkpoint 1 (03/10/2026): preparar o PDF de escopo e planejamento em duas páginas com base no documento Word fornecido, preservar a equipe e a divisão das tarefas, conferir o link público do GitHub e preparar um rascunho de e-mail para o professor. Entregar os arquivos localmente, sem envio da atividade ou do e-mail.
+
 Publicação GitHub concluída (03/10/2026): repositório privado `https://github.com/PSX14/garagem-pe`, vinculado como `origin`, com `main` enviada e acompanhando `origin/main`. O primeiro commit `94b68e4` foi conferido pela API do GitHub e coincide com o local; 107 arquivos recebidos, sem `work/`, `node_modules/` ou `.expo/`. Identidade GitHub confirmada e e-mail noreply usados nos commits. A configuração de autenticação e transporte foi limitada a este repositório.
 
 Preparação adicional solicitada após a entrega: perfil EAS `preview` para APK, distribuição interna, Node 24.19.0 e `EXPO_PUBLIC_MAP_MODE=local`; `.easignore` exclui temporários, entregáveis e arquivos de assinatura. O componente não monta Google Maps nesse perfil sem chave própria. Instruções PowerShell em `outputs/GERAR-APK.md`, com login Expo e raiz explícita via `EAS_PROJECT_ROOT`. A preparação local está concluída; gerar e instalar o APK depende da execução desses comandos na conta Expo do usuário. Isso não altera o fechamento anterior do objetivo Expo Go.
@@ -40,3 +42,6 @@ Preparação adicional solicitada após a entrega: perfil EAS `preview` para APK
 - Evidências, códigos e limitações registradas em `outputs/RELATORIO-VALIDACAO.md`; parecer de fidelidade em `outputs/REVISAO-VISUAL.md`. O mapa online apresentou falha de autorização no Expo Go; lista e mapa demonstrativo local funcionaram com os mesmos dados/filtros.
 - Reabertura final após npm ci concluída: inicialização a frio da ExperienceActivity com Status ok, navegação do proprietário funcional e 4 reservas concluídas preservadas. Ganhos observados: R$ 92,00 bruto, R$ 13,80 comissão e R$ 78,20 líquido; captura `outputs/screenshots/21-reabertura-final-ganhos.png`. Não houve alteração das fontes já testadas.
 - Foto local preservada na mesma reabertura final, mesmo sem a cópia de seleção do emulador: captura `outputs/screenshots/22-reabertura-final-foto.png`. Registro `outputs/verification/runtime-final.json` sem erros do aplicativo nos filtros de log examinados; mapa base Google mantém a limitação já documentada.
+
+## Entrega da versão navegável — 16/10/2026
+README atualizado e cinco capturas Android históricas selecionadas em outputs/versao-navegavel. Conferência atual documentada em VERIFICACOES.md: estrutura, tipagem, lint, Doctor e bundle aprovados; Jest bloqueado por EPERM do ambiente e consulta Expo aponta atualizações de correção. Publicar documentação e evidências, preservando o e-mail pessoal fora do Git.

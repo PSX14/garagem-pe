@@ -16,3 +16,4 @@ credentials.json
 .aws/
 .codex/
 .agents/
+outputs/checkpoint-1/Email-Professor-Checkpoint-1.txt

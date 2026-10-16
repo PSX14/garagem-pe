@@ -2,6 +2,14 @@
 
 **Estacione fácil. Ganhe com seu espaço.**
 
+## Entrega: versão navegável
+
+O projeto contém as principais telas dos modos motorista e proprietário, formulários com validações e persistência local. O código está neste [repositório público](https://github.com/PSX14/garagem-pe).
+
+**[Veja as cinco capturas reais e o roteiro de avaliação](outputs/versao-navegavel/README.md).** A seleção inclui início, detalhes da vaga, formulário de reserva, cadastro de vaga e painel do proprietário. As capturas foram feitas no Expo Go para Android em 09/09/2026; a documentação desta entrega foi organizada em 16/10/2026.
+
+Para começar no PowerShell, abra a pasta do projeto e execute `npm.cmd ci` e `npm.cmd start`. Depois abra o QR Code no Expo Go para Android compatível com SDK 57. As instruções completas e as limitações estão abaixo.
+
 **APK Android:** o perfil `preview` foi preparado em `eas.json`. Siga o [guia para gerar e instalar o APK](outputs/GERAR-APK.md). A compilação EAS e a instalação do APK ainda não foram executadas; as evidências de execução existentes são do Expo Go. O APK demonstrativo usará diretamente o mapa local com preços clicáveis.
 
 **PowerShell:** se aparecer bloqueio de `npm.ps1` ou `npx.ps1`, use `npm.cmd` e `npx.cmd` nos comandos deste guia, por exemplo `npm.cmd ci` e `npm.cmd start`.
