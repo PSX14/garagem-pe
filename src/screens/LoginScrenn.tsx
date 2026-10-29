@@ -3,6 +3,9 @@ import { Alert, Keyboard, Pressable, StyleSheet, TextInput, View } from 'react-n
 import { BrandLogo, Button, Field, GarageArt, Icon, Notice, Row, Screen, Txt } from '../ui/components';
 import { colors } from '../ui/theme';
 
+//supabase
+import { supabase } from '../lib/supabase';
+
 type LoginScreenProps = { onBack: () => void; onLogin: () => void; onCreateAccount: () => void };
 
 export function LoginScreen({ onBack, onLogin, onCreateAccount }: LoginScreenProps) {
@@ -12,15 +15,53 @@ export function LoginScreen({ onBack, onLogin, onCreateAccount }: LoginScreenPro
 	const [emailError, setEmailError] = useState('');
 	const [passwordError, setPasswordError] = useState('');
 
-	function submit() {
-		Keyboard.dismiss();
-		const normalizedEmail = email.trim();
+	const [loading, setLoading] = useState(false);
+
+	async function submit() {
+		Keyboard.dimiss();
+
+		const normalizedEmail = email.trim().toLowerCase();
 		const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail);
-		setEmailError(validEmail ? '' : 'Informe um e-mail válido.');
-		setPasswordError(password.trim() ? '' : 'Informe sua senha.');
-		if (!validEmail || !password.trim()) return;
-		onLogin();
+
+	 	setEmailError(validEmail ? '' : 'Informe um e-mail válido.');
+	 	setPasswordError(password.trim() ? '' : 'Informe sua senha.');
+
+		if (!validEmail || !password) return;
+
+		setLoading(true);
+
+		try {
+			const {error} = await supabase.auth.singInWithPassword({
+				email: normalizedEmail,
+				password,
+			});
+
+			if (error) {
+				Alert.alert (
+					'Não foi possível entrar', 
+					'Confira seu e-mail e sua senha. Se acabou de criar a conta, confirme seu e-mail antes de entrar.'
+				); return;
+			}
+			onLogin();
+		} catch {
+			Alert.alert(
+				'Erro de conexão',
+				'Não foi possível conectar ao serviço. Verifique sua internet e tente novamente.'
+			);
+		} finally {
+			setLoading(false);
+		}
 	}
+
+	// function submit() {
+	// 	Keyboard.dismiss();
+	// 	const normalizedEmail = email.trim();
+	// 	const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail);
+	// 	setEmailError(validEmail ? '' : 'Informe um e-mail válido.');
+	// 	setPasswordError(password.trim() ? '' : 'Informe sua senha.');
+	// 	if (!validEmail || !password.trim()) return;
+	// 	onLogin();
+	// }
 
 	function explainUnavailable() {
 		Alert.alert('Recuperação indisponível', 'Este protótipo não armazena senhas nem envia e-mails de recuperação.');
@@ -42,10 +83,10 @@ export function LoginScreen({ onBack, onLogin, onCreateAccount }: LoginScreenPro
 				{!!passwordError && <Txt variant="small" color={colors.danger}>{passwordError}</Txt>}
 			</View>
 			<Pressable accessibilityRole="button" onPress={explainUnavailable} style={styles.textLink}><Txt variant="label" color={colors.primary}>Esqueci minha senha</Txt></Pressable>
-			<Button title="Entrar" icon="log-in" onPress={submit} testID="login-submit" />
+			<Button title="Entrar" icon="log-in" onPress={submit} testID="login-submit" loading={loading} />
 		</View>
 		<Row style={styles.signup}><Txt color={colors.muted}>Ainda não tem uma conta?</Txt><Pressable accessibilityRole="button" onPress={onCreateAccount}><Txt variant="label" color={colors.primary}>Criar uma conta</Txt></Pressable></Row>
-		<Notice>Modo demonstração ainda</Notice>
+		<Notice>Entre com sua conta do Garagem PE.</Notice>
 	</Screen>;
 }
 
