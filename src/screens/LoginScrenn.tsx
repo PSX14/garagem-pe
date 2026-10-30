@@ -18,7 +18,7 @@ export function LoginScreen({ onBack, onLogin, onCreateAccount }: LoginScreenPro
 	const [loading, setLoading] = useState(false);
 
 	async function submit() {
-		Keyboard.dimiss();
+		Keyboard.dismiss();
 
 		const normalizedEmail = email.trim().toLowerCase();
 		const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail);
@@ -31,7 +31,7 @@ export function LoginScreen({ onBack, onLogin, onCreateAccount }: LoginScreenPro
 		setLoading(true);
 
 		try {
-			const {error} = await supabase.auth.singInWithPassword({
+			const {error} = await supabase.auth.signInWithPassword({
 				email: normalizedEmail,
 				password,
 			});
@@ -83,7 +83,7 @@ export function LoginScreen({ onBack, onLogin, onCreateAccount }: LoginScreenPro
 				{!!passwordError && <Txt variant="small" color={colors.danger}>{passwordError}</Txt>}
 			</View>
 			<Pressable accessibilityRole="button" onPress={explainUnavailable} style={styles.textLink}><Txt variant="label" color={colors.primary}>Esqueci minha senha</Txt></Pressable>
-			<Button title="Entrar" icon="log-in" onPress={submit} testID="login-submit" loading={loading} />
+			<Button title={loading? 'Entrando...' : 'Entrar'} icon="log-in" onPress={submit} testID="login-submit" disabled={loading} />
 		</View>
 		<Row style={styles.signup}><Txt color={colors.muted}>Ainda não tem uma conta?</Txt><Pressable accessibilityRole="button" onPress={onCreateAccount}><Txt variant="label" color={colors.primary}>Criar uma conta</Txt></Pressable></Row>
 		<Notice>Entre com sua conta do Garagem PE.</Notice>
