@@ -45,3 +45,6 @@ Preparação adicional solicitada após a entrega: perfil EAS `preview` para APK
 
 ## Entrega da versão navegável — 16/10/2026
 README atualizado e cinco capturas Android históricas selecionadas em outputs/versao-navegavel. Conferência atual documentada em VERIFICACOES.md: estrutura, tipagem, lint, Doctor e bundle aprovados; Jest bloqueado por EPERM do ambiente e consulta Expo aponta atualizações de correção. Publicar documentação e evidências, preservando o e-mail pessoal fora do Git.
+
+## Login demonstrativo — 23/10/2026
+Tela nativa de entrada integrada à boas-vindas, com campos de e-mail e senha, alternância de visibilidade e validação local. Sem autenticação real, criação de conta, recuperação por e-mail, envio ou persistência de senha; o acesso válido inicia o modo demonstração existente. ESLint focado aprovado; Jest não iniciou por incompatibilidade entre react 19.3.0 e react-test-renderer 19.2.3, e o typecheck global segue bloqueado por erros existentes em EarningsScreen.tsx e photos.test.ts.

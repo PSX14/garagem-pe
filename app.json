@@ -41,7 +41,8 @@
           "microphonePermission": false
         }
       ],
-      "expo-asset"
+      "expo-asset",
+      "expo-status-bar"
     ],
     "extra": {
       "eas": {
