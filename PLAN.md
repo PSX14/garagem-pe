@@ -48,3 +48,9 @@ README atualizado e cinco capturas Android históricas selecionadas em outputs/v
 
 ## Login demonstrativo — 23/10/2026
 Tela nativa de entrada integrada à boas-vindas, com campos de e-mail e senha, alternância de visibilidade e validação local. Sem autenticação real, criação de conta, recuperação por e-mail, envio ou persistência de senha; o acesso válido inicia o modo demonstração existente. ESLint focado aprovado; Jest não iniciou por incompatibilidade entre react 19.3.0 e react-test-renderer 19.2.3, e o typecheck global segue bloqueado por erros existentes em EarningsScreen.tsx e photos.test.ts.
+
+## Correção autorizada de autenticação — 30/10/2026
+Incorporar os quatro commits da Hirla em codex/corrigir-login-supabase, no repositório PSX14. Usuário autorizou explicitamente manter Supabase com login real; escopo ampliado apenas para autenticação. Corrigir login, cadastro, configuração, sessão e dependências; manter dados de negócio locais. Executar verificações e publicar ramificação revisável. Novo dispositivo separado criado a pedido, sem modificar o existente; execução bloqueada pela aceleração do emulador indisponível.
+
+## Integração final e metas — 05/11/2026
+Integrados os cinco commits da Hirla até 1f30429 e os commits de PSX14 até 4a084d1, preservando autoria. Correções locais recuperadas, fluxo Supabase mantido por autorização do usuário e compatibilidade SDK 58 atualizada. Metas: persistência e CRUD de veículos; integração login/cadastro/sessão; roteiro individual para a apresentação. Verificação automatizada completa aprovada. Publicar na main; validação visual e login confirmado serão feitos no Expo Go do celular, conforme escolha do usuário.

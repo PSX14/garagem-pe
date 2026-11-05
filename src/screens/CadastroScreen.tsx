@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Alert, Keyboard, Pressable, StyleSheet, TextInput, View } from 'react-native';
 import { BrandLogo, Button, Field, GarageArt, Icon, Notice, Screen, Txt } from '../ui/components';
+import { requireSupabase } from '../lib/supabase';
 import { colors } from '../ui/theme';
-import {supabase} from '../lib/supabase';
 
-type CadastroScreenProps = { onBack: () => void };
+type CadastroScreenProps = { onBack: () => void; onRegistered?: () => void | Promise<void> };
 type FormField = 'name' | 'email' | 'phone' | 'password' | 'confirmation';
 type FormErrors = Partial<Record<FormField, string>>;
 
@@ -29,7 +29,9 @@ function PasswordField({ label, value, visible, error, onChangeText, onToggleVis
 	</View>;
 }
 
-export function CadastroScreen({ onBack }: CadastroScreenProps) {
+export function CadastroScreen({ onBack, onRegistered }: CadastroScreenProps) {
+	const pending = useRef(false);
+	const [loading, setLoading] = useState(false);
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [phone, setPhone] = useState('');
@@ -38,91 +40,35 @@ export function CadastroScreen({ onBack }: CadastroScreenProps) {
 	const [passwordVisible, setPasswordVisible] = useState(false);
 	const [confirmationVisible, setConfirmationVisible] = useState(false);
 	const [errors, setErrors] = useState<FormErrors>({});
-	const [loading, setLoading] = useState(false);
 
-async function submit() {
-  Keyboard.dismiss();
+	async function submit() {
+		if (pending.current) return;
+		Keyboard.dismiss();
+		const nextErrors: FormErrors = {};
+		if (!name.trim()) nextErrors.name = 'Informe seu nome.';
+		if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) nextErrors.email = 'Informe um e-mail válido.';
+		if (!/^\d{10,11}$/.test(phone.replace(/\D/g, ''))) nextErrors.phone = 'Informe um telefone com DDD.';
+		if (password.length < 8 || !password.trim()) nextErrors.password = 'A senha deve ter pelo menos 8 caracteres.';
+		if (!confirmation) nextErrors.confirmation = 'Confirme sua senha.';
+		else if (password !== confirmation) nextErrors.confirmation = 'As senhas não coincidem.';
+		setErrors(nextErrors);
+		if (Object.keys(nextErrors).length > 0) return;
 
-  const normalizedName = name.trim();
-  const normalizedEmail = email.trim().toLowerCase();
-  const normalizedPhone = phone.replace(/\D/g, '');
-
-  const nextErrors: FormErrors = {};
-
-  if (!normalizedName) {
-    nextErrors.name = 'Informe seu nome.';
-  }
-
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) {
-    nextErrors.email = 'Informe um e-mail válido.';
-  }
-
-  if (!/^\d{10,11}$/.test(normalizedPhone)) {
-    nextErrors.phone = 'Informe um telefone com DDD.';
-  }
-
-  if (password.length < 8) {
-    nextErrors.password = 'A senha deve ter pelo menos 8 caracteres.';
-  }
-
-  if (!confirmation) {
-    nextErrors.confirmation = 'Confirme sua senha.';
-  } else if (password !== confirmation) {
-    nextErrors.confirmation = 'As senhas não coincidem.';
-  }
-
-  setErrors(nextErrors);
-
-  if (Object.keys(nextErrors).length > 0) return;
-
-  setLoading(true);
-
-  try {
-    const { error } = await supabase.auth.signUp({
-      email: normalizedEmail,
-      password,
-      options: {
-        data: {
-          full_name: normalizedName,
-          phone: normalizedPhone,
-        },
-      },
-    });
-
-    if (error) {
-      Alert.alert('Não foi possível criar a conta', error.message);
-      return;
-    }
-
-    Alert.alert(
-      'Cadastro iniciado!',
-      'Se a confirmação por e-mail estiver habilitada, confira sua caixa de entrada e confirme seu endereço antes de entrar.',
-      [{ text: 'Ir para o login', onPress: onBack }],
-    );
-  } catch {
-    Alert.alert(
-      'Erro de conexão',
-      'Não foi possível conectar ao serviço. Verifique sua internet e tente novamente.',
-    );
-  } finally {
-    setLoading(false);
-  }
-}
-
-	// async function submit() {
-	// 	Keyboard.dismiss();
-	// 	const nextErrors: FormErrors = {};
-	// 	if (!name.trim()) nextErrors.name = 'Informe seu nome.';
-	// 	if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) nextErrors.email = 'Informe um e-mail válido.';
-	// 	if (!/^\d{10,11}$/.test(phone.replace(/\D/g, ''))) nextErrors.phone = 'Informe um telefone com DDD.';
-	// 	if (password.length < 8) nextErrors.password = 'A senha deve ter pelo menos 8 caracteres.';
-	// 	if (!confirmation) nextErrors.confirmation = 'Confirme sua senha.';
-	// 	else if (password !== confirmation) nextErrors.confirmation = 'As senhas não coincidem.';
-	// 	setErrors(nextErrors);
-	// 	if (Object.keys(nextErrors).length > 0) return;
-
-	// 	Alert.alert('Cadastro indisponível', 'Este protótipo não possui serviço de autenticação. Seus dados não serão enviados nem armazenados.', [{ text: 'Voltar para login', onPress: onBack }]);
-	// }
+		pending.current = true;
+    setLoading(true);
+    try {
+      const { data, error } = await requireSupabase().auth.signUp({
+        email: email.trim().toLowerCase(), password,
+        options: { data: { full_name: name.trim(), phone: phone.replace(/\D/g, '') } },
+      });
+      if (error) { Alert.alert('Não foi possível cadastrar', 'Confira os dados e tente novamente. O serviço pode limitar novas tentativas por alguns instantes.'); return; }
+      setPassword(''); setConfirmation('');
+      if (data.session && onRegistered) await onRegistered();
+      else Alert.alert('Confira seu e-mail', 'Se o cadastro foi aceito, você receberá as instruções de confirmação. Depois de confirmar, volte para entrar com sua senha.', [{ text: 'Voltar para login', onPress: onBack }]);
+    } catch (reason) {
+      Alert.alert('Não foi possível cadastrar', reason instanceof Error && reason.message.startsWith('O acesso à conta') ? reason.message : 'Verifique sua conexão e tente novamente.');
+    } finally { pending.current = false; setLoading(false); }
+	}
 
 	return <Screen testID="cadastro-screen">
 		<View style={{ gap: 8, paddingTop: 14 }}><BrandLogo /><Txt variant="small" color={colors.muted}>Seu espaço na cidade.</Txt></View>
@@ -137,7 +83,7 @@ async function submit() {
 			<PasswordField label="Confirmar senha" value={confirmation} visible={confirmationVisible} error={errors.confirmation} onChangeText={value => { setConfirmation(value); setErrors(current => ({ ...current, confirmation: undefined })); }} onToggleVisibility={() => setConfirmationVisible(value => !value)} onSubmitEditing={() => { void submit(); }} />
 			<Button title={loading ? 'Criando uma conta' : 'Criar conta'} icon="user-plus" onPress={submit} testID="create-account-submit" disabled={loading} />
 		</View>
-		{/* <Notice>Protótipo acadêmico: não há criação de conta nem envio ou armazenamento desses dados.</Notice> */}
+		<Notice>Ao criar a conta, seu nome, e-mail, telefone e senha serão enviados ao serviço de autenticação. As vagas e reservas continuam demonstrativas neste aparelho.</Notice>
 	</Screen>;
 }
 

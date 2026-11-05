@@ -16,7 +16,7 @@ const lock = json('package-lock.json');
 const config = json('app.json').expo;
 const dependencies = { ...manifest.dependencies, ...manifest.devDependencies };
 const forbiddenPackages = /^(?:(?:react-dom|react-native-web|react-native-webview|next|vite|vue|angular|ionic|electron|firebase|supabase|express|fastify|koa|hono|mongoose|prisma|pg|mysql2|sequelize|stripe|mercadopago|pagarme)(?:$|\/)|(?:@vitejs|@vue|@angular|@ionic|@firebase|@react-native-firebase|@supabase|@nestjs|@prisma|@stripe|@stripe-react-native|@paypal)\/)/;
-for (const name of Object.keys(dependencies)) check(!forbiddenPackages.test(name), `Dependência direta fora do escopo mobile/local: ${name}`);
+for (const name of Object.keys(dependencies)) check((name === '@supabase/supabase-js' || !forbiddenPackages.test(name)), `Dependência direta fora do escopo mobile/local: ${name}`);
 for (const name of ['expo', 'react', 'react-native', 'typescript', '@react-native-async-storage/async-storage', 'expo-file-system']) check(Boolean(dependencies[name]), `Dependência essencial ausente: ${name}`);
 check(lock.lockfileVersion >= 2 && Boolean(lock.packages?.['']), 'package-lock.json precisa de inventário reproduzível de pacotes.');
 for (const section of ['dependencies', 'devDependencies']) {
@@ -64,7 +64,7 @@ for (const filename of applicationFiles) {
   }
   function dependency(node, specifier) {
     imported.add(specifier);
-    if (forbiddenPackages.test(specifier) || /^(?:node:|fs$|http$|https$|net$|tls$|child_process$)/.test(specifier)) report(node, `Import fora do escopo React Native/local: ${specifier}`);
+    if ((forbiddenPackages.test(specifier) && specifier !== '@supabase/supabase-js') || /^(?:node:|fs$|http$|https$|net$|tls$|child_process$)/.test(specifier)) report(node, `Import fora do escopo React Native/local: ${specifier}`);
     if (specifier === '@react-native-async-storage/async-storage' && file !== 'src/state/persistence.ts') report(node, 'AsyncStorage deve ser acessado pelo serviço central de persistência.');
     if (/\.(?:css|scss|sass|less|html?)$/.test(specifier)) report(node, `Import web proibido: ${specifier}`);
   }
@@ -134,6 +134,6 @@ if (failures.length) {
   process.exitCode = 1;
 } else {
   console.log(`Projeto aprovado: ${checks} verificações estruturais, ${applicationFiles.length} arquivos de aplicativo e catálogo demonstrativo íntegro.`);
-  console.log('Escopo: React Native/Expo/TypeScript, ausência de frontend web/backend/pagamentos, strict, lockfile, persistência central e seeds.');
+  console.log('Escopo: React Native/Expo/TypeScript, autenticação Supabase autorizada, ausência de frontend web/backend próprio/pagamentos, strict, lockfile, persistência central e seeds.');
   console.log('Este comando não substitui typecheck, lint, testes, Expo Doctor, bundle nem execução Android.');
 }

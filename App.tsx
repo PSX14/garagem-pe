@@ -6,6 +6,7 @@ import { Role } from './src/domain/types';
 import { AppProvider, useApp, useReadyApp } from './src/state/AppProvider';
 import { BookingDetail, BookingForm, BookingsScreen, ExploreScreen, GarageDetail } from './src/screens/DriverScreens';
 import { EarningsScreen, GarageEditor, OwnerBookings, OwnerDashboard, OwnerGarages } from './src/screens/OwnerScreens';
+import { AuthProvider } from './src/state/AuthProvider';
 import { ProfileScreen } from './src/screens/ProfileScreen';
 import { WelcomeScreen } from './src/screens/WelcomeScreen';
 import { Button, Empty, Icon, Screen, Txt } from './src/ui/components';
@@ -58,6 +59,6 @@ function Root() {
   if (error || !state) return <SafeAreaView style={styles.root}><Screen><Empty icon="alert-circle" title="Seus dados precisam de atenção" description={error ?? 'Não foi possível carregar a demonstração.'} /><Button title="Tentar novamente" onPress={reload} /><Button title="Restaurar demonstração" variant="danger" onPress={() => Alert.alert('Restaurar seus dados?', 'Os dados atuais serão substituídos pelos dados de demonstração. Uma cópia de dados corrompidos, quando encontrada, é preservada pelo serviço local.', [{ text: 'Manter', style: 'cancel' }, { text: 'Restaurar', style: 'destructive', onPress: () => { void restore().catch(reason => Alert.alert('Erro ao restaurar', reason.message)); } }])} /></Screen></SafeAreaView>;
   return state.onboarded ? <Navigation /> : <SafeAreaView style={styles.root}><WelcomeScreen /></SafeAreaView>;
 }
-export default function App() { return <SafeAreaProvider><StatusBar style="dark" /><AppProvider><Root /></AppProvider></SafeAreaProvider>; }
+export default function App() { return <SafeAreaProvider><StatusBar style="dark" /><AuthProvider><AppProvider><Root /></AppProvider></AuthProvider></SafeAreaProvider>; }
 const styles = StyleSheet.create({ root: { flex: 1, backgroundColor: colors.background }, flex: { flex: 1 }, loading: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 15 }, tabs: { flexDirection: 'row', backgroundColor: colors.white, borderTopWidth: 1, borderColor: colors.line, paddingHorizontal: 6, paddingTop: 8, paddingBottom: 7 }, tab: { flex: 1, alignItems: 'center', justifyContent: 'center', minHeight: 54, gap: 3 }, tabIcon: { minWidth: 46, height: 30, borderRadius: 12, alignItems: 'center', justifyContent: 'center' } });
 

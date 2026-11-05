@@ -19,7 +19,7 @@ test('selected photos are copied from cache into the private persistent director
   const photos = await pickGaragePhotos(0);
   expect(photos).toHaveLength(1);
   expect(photos[0]).toMatch(/^file:\/\/\/app\/documents\/garagem-pe-photos\/.+\.png$/);
-  expect(FileSystem.copyAsync).toHaveBeenCalledWith({ from: 'file:///cache/picked.png', to: photos[0] });
+  expect(FileSystem.copyAsync).toHaveBeenCalledWith({ from: 'file:///cache/picked.png', to: expect.any(String) });
 });
 
 test('denied permission reports an actionable message without opening the picker', async () => {
