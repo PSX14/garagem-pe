@@ -2,19 +2,13 @@
 
 **Estacione fácil. Ganhe com seu espaço.**
 
-## Integração da dupla e avaliações — 05/11/2026
-
-Esta versão incorpora os cinco commits da Hirla, preserva as atualizações de PSX14 e corrige a autenticação. Veja [configuração, testes e limites](outputs/CORRECAO-AUTENTICACAO.md). O login e a criação de conta usam Supabase Auth; vagas e reservas continuam demonstrativas e locais. Recuperação de senha ainda não está implementada no aplicativo.
-
-**[Roteiro das metas de 23/10, 30/10 e 06/11](outputs/METAS-AVALIACOES.md)**: persistência com AsyncStorage, CRUD completo de veículos, integração e depuração. Verificação automatizada aprovada com 186 testes; conferência no celular pelo Expo Go pendente.
-
 ## Entrega: versão navegável
 
 O projeto contém as principais telas dos modos motorista e proprietário, formulários com validações e persistência local. O código está neste [repositório público](https://github.com/PSX14/garagem-pe).
 
 **[Veja as cinco capturas reais e o roteiro de avaliação](outputs/versao-navegavel/README.md).** A seleção inclui início, detalhes da vaga, formulário de reserva, cadastro de vaga e painel do proprietário. As capturas foram feitas no Expo Go para Android em 09/09/2026; a documentação desta entrega foi organizada em 16/10/2026.
 
-Para começar no PowerShell, abra a pasta do projeto e execute `npm.cmd ci` e `npm.cmd start`. Depois abra o QR Code no Expo Go para Android compatível com SDK 58. As instruções completas e as limitações estão abaixo.
+Para começar no PowerShell, abra a pasta do projeto e execute `npm.cmd ci` e `npm.cmd start`. Depois abra o QR Code no Expo Go para Android compatível com SDK 57. As instruções completas e as limitações estão abaixo.
 
 **APK Android:** o perfil `preview` foi preparado em `eas.json`. Siga o [guia para gerar e instalar o APK](outputs/GERAR-APK.md). A compilação EAS e a instalação do APK ainda não foram executadas; as evidências de execução existentes são do Expo Go. O APK demonstrativo usará diretamente o mapa local com preços clicáveis.
 
@@ -22,7 +16,7 @@ Para começar no PowerShell, abra a pasta do projeto e execute `npm.cmd ci` e `n
 
 Aplicativo acadêmico mobile para conectar motoristas a vagas privadas ociosas em Recife e na Região Metropolitana. O motorista pesquisa e reserva; o proprietário cadastra espaços, recebe reservas e acompanha ganhos simulados. Os dois modos usam o mesmo aplicativo e podem ser alternados na aba **Perfil**.
 
-Toda a interface foi construída com **React Native, Expo e TypeScript strict**, usando componentes nativos e `StyleSheet`. Não há frontend web, HTML, CSS, React DOM, WebView, backend próprio ou integração de pagamentos. Apenas a autenticação de contas usa o Supabase, conforme autorização de 30/10/2026; os dados de vagas e reservas permanecem locais. O Metro executado durante o desenvolvimento serve o bundle do aplicativo; ele não é um backend do produto.
+Toda a interface foi construída com **React Native, Expo e TypeScript strict**, usando componentes nativos e `StyleSheet`. Não há frontend web, HTML, CSS, React DOM, WebView, backend, autenticação real, banco remoto ou integração de pagamentos. O Metro executado durante o desenvolvimento serve o bundle do aplicativo; ele não é um backend do produto.
 
 ## Instalar e iniciar
 
@@ -30,9 +24,9 @@ Abra um terminal na raiz deste repositório, onde está o `package.json`.
 
 Pré-requisitos:
 
-- Node.js compatível com as dependências. O ambiente utilizado tem **Node 24.19.0** e **npm 12.2.1**; a linha Node 24 deve ser pelo menos 24.3.0.
+- Node.js compatível com as dependências. O ambiente utilizado tem **Node 24.19.0** e **npm 11.17.0**; a linha Node 24 deve ser pelo menos 24.3.0.
 - npm, com as versões exatas resolvidas no `package-lock.json`.
-- Aparelho Android ou emulador Android e **Expo Go com suporte ao SDK 58**.
+- Aparelho Android ou emulador Android e **Expo Go com suporte ao SDK 57**.
 - Internet para instalar dependências e conexão entre computador e Android para carregar o bundle de desenvolvimento.
 
 ```sh
@@ -42,12 +36,12 @@ npm start
 
 No Android físico:
 
-1. Abra o Expo Go compatível com SDK 58.
+1. Abra o Expo Go compatível com SDK 57.
 2. Mantenha computador e aparelho na mesma rede.
 3. Use a leitura de QR Code do Expo Go para abrir o endereço mostrado pelo terminal.
 4. Aguarde o carregamento e toque em **Encontrar uma vaga**, **Disponibilizar uma vaga** ou **Entrar no modo demonstração**.
 
-Mantenha o terminal do Expo aberto enquanto usa a versão de desenvolvimento. O modo demonstração funciona sem conta ou configuração externa. Para login/cadastro reais, copie `.env.example` para `.env`, preencha a URL e a chave pública do Supabase e reinicie o Expo. Não use chave secret/service_role.
+Mantenha o terminal do Expo aberto enquanto usa a versão de desenvolvimento. Não é necessário cadastrar uma conta no Garagem PE ou configurar variáveis de ambiente, credenciais ou serviços externos.
 
 ### Emulador Android
 
@@ -141,7 +135,7 @@ O PDF `Garagem_PE_Formulario_e_Mockups.pdf` e os cinco arquivos `Garagem_PE_Mock
 
 As adaptações funcionais preservam a privacidade e a natureza acadêmica: não há selo de verificação de identidade ou propriedade, um preço ilustrado não substitui os dados do anúncio e a comissão segue a divisão explicitada na seção de valores. A comparação visual final e as evidências de execução Android são registradas separadamente.
 
-Base: **Expo SDK 58**, **React Native 0.88.1**, **React 19.3.0** e **TypeScript 6 strict**, com `noUncheckedIndexedAccess`. As versões compatíveis dos módulos Expo e nativos estão no `package.json` e no lockfile.
+Base: **Expo SDK 57**, **React Native 0.86.3**, **React 19.2.3** e **TypeScript 6 strict**, com `noUncheckedIndexedAccess`. As versões compatíveis dos módulos Expo e nativos estão no `package.json` e no lockfile.
 
 Complementos: AsyncStorage, React Native Maps, Expo Location, Expo Image Picker, Expo FileSystem, DateTimePicker, Expo Vector Icons, Safe Area Context, Jest/Jest Expo e React Native Testing Library.
 

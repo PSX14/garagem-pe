@@ -1,11 +1,12 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Alert, Keyboard, Pressable, StyleSheet, TextInput, View } from 'react-native';
 import { BrandLogo, Button, Field, GarageArt, Icon, Notice, Row, Screen, Txt } from '../ui/components';
 import { colors } from '../ui/theme';
 
-import { requireSupabase } from '../lib/supabase';
+//supabase
+import { supabase } from '../lib/supabase';
 
-type LoginScreenProps = { onBack: () => void; onLogin: () => void | Promise<void>; onCreateAccount: () => void };
+type LoginScreenProps = { onBack: () => void; onLogin: () => void; onCreateAccount: () => void };
 
 export function LoginScreen({ onBack, onLogin, onCreateAccount }: LoginScreenProps) {
 	const [email, setEmail] = useState('');
@@ -15,10 +16,8 @@ export function LoginScreen({ onBack, onLogin, onCreateAccount }: LoginScreenPro
 	const [passwordError, setPasswordError] = useState('');
 
 	const [loading, setLoading] = useState(false);
-	const pending = useRef(false);
 
 	async function submit() {
-		if (pending.current) return;
 		Keyboard.dismiss();
 
 		const normalizedEmail = email.trim().toLowerCase();
@@ -27,38 +26,45 @@ export function LoginScreen({ onBack, onLogin, onCreateAccount }: LoginScreenPro
 	 	setEmailError(validEmail ? '' : 'Informe um e-mail válido.');
 	 	setPasswordError(password.trim() ? '' : 'Informe sua senha.');
 
-		if (!validEmail || !password.trim()) return;
-		pending.current = true;
+		if (!validEmail || !password) return;
 
 		setLoading(true);
 
 		try {
-			const { data, error } = await requireSupabase().auth.signInWithPassword({
+			const {error} = await supabase.auth.signInWithPassword({
 				email: normalizedEmail,
 				password,
 			});
 
-			if (error || !data.session) {
+			if (error) {
 				Alert.alert (
 					'Não foi possível entrar', 
 					'Confira seu e-mail e sua senha. Se acabou de criar a conta, confirme seu e-mail antes de entrar.'
 				); return;
 			}
-			await onLogin();
-		} catch (reason) {
+			onLogin();
+		} catch {
 			Alert.alert(
 				'Erro de conexão',
-				reason instanceof Error && reason.message.startsWith('O acesso à conta') ? reason.message : 'Não foi possível conectar ao serviço. Verifique sua internet e tente novamente.'
+				'Não foi possível conectar ao serviço. Verifique sua internet e tente novamente.'
 			);
 		} finally {
-			pending.current = false;
 			setLoading(false);
 		}
 	}
 
+	// function submit() {
+	// 	Keyboard.dismiss();
+	// 	const normalizedEmail = email.trim();
+	// 	const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail);
+	// 	setEmailError(validEmail ? '' : 'Informe um e-mail válido.');
+	// 	setPasswordError(password.trim() ? '' : 'Informe sua senha.');
+	// 	if (!validEmail || !password.trim()) return;
+	// 	onLogin();
+	// }
 
 	function explainUnavailable() {
-		Alert.alert('Recuperação indisponível', 'A recuperação de senha ainda não está disponível neste aplicativo. Solicite ajuda à equipe responsável pelo projeto.');
+		Alert.alert('Recuperação indisponível', 'Este protótipo não armazena senhas nem envia e-mails de recuperação.');
 	}
 
 	return <Screen testID="login-screen">
@@ -77,7 +83,7 @@ export function LoginScreen({ onBack, onLogin, onCreateAccount }: LoginScreenPro
 				{!!passwordError && <Txt variant="small" color={colors.danger}>{passwordError}</Txt>}
 			</View>
 			<Pressable accessibilityRole="button" onPress={explainUnavailable} style={styles.textLink}><Txt variant="label" color={colors.primary}>Esqueci minha senha</Txt></Pressable>
-			<Button title={loading ? 'Entrando...' : 'Entrar'} icon="log-in" onPress={submit} testID="login-submit" disabled={loading} />
+			<Button title={loading? 'Entrando...' : 'Entrar'} icon="log-in" onPress={submit} testID="login-submit" disabled={loading} />
 		</View>
 		<Row style={styles.signup}><Txt color={colors.muted}>Ainda não tem uma conta?</Txt><Pressable accessibilityRole="button" onPress={onCreateAccount}><Txt variant="label" color={colors.primary}>Criar uma conta</Txt></Pressable></Row>
 		<Notice>Entre com sua conta do Garagem PE.</Notice>

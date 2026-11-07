@@ -13,7 +13,7 @@ export function EarningsScreen({ onBooking }: { onBooking?: (id: string) => void
   const [scope, setScope] = useState<'completed' | 'open' | 'all'>('completed');
   const [garageId, setGarageId] = useState('all');
   const { width, fontScale } = useWindowDimensions();
-  const chartRef = useRef<React.ComponentRef<typeof ScrollView>>(null);
+  const chartRef = useRef<ScrollView>(null);
   const columnWidth = Math.max(48 * fontScale, (Math.min(width, 660) - 110) / 6);
   useEffect(() => { chartRef.current?.scrollToEnd({ animated: false }); }, [month]);
   const garages = state.garages.filter(garage => garage.ownerId === 'local');

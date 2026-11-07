@@ -3,13 +3,6 @@ import { calculatePrice, createInitialState, generateBookingCode } from '../doma
 import { validateFilters, validateGarage, validatePreferences, validatedProfile, validateVehicle } from '../domain/validation';
 import type { AppState, Booking, Garage, Profile, Review, Vehicle } from '../domain/types';
 
-// Supabase tokens use their own namespace, separate from demonstration data.
-export const authStorage = {
-  getItem: (key: string) => AsyncStorage.getItem('@garagem-pe/auth/' + key),
-  setItem: (key: string, value: string) => AsyncStorage.setItem('@garagem-pe/auth/' + key, value),
-  removeItem: (key: string) => AsyncStorage.removeItem('@garagem-pe/auth/' + key),
-};
-
 export const STORAGE_KEY = '@garagem-pe/state/v2';
 export const LEGACY_KEY = '@garagem-pe/state/v1';
 export const BACKUP_KEY = '@garagem-pe/state/corrupted/v2';

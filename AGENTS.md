@@ -1,7 +1,7 @@
 # Garagem PE
 
 - Aplicativo acadêmico exclusivamente React Native, Expo e TypeScript strict; componentes nativos e StyleSheet.
-- Não criar web, HTML/CSS, React DOM, backend próprio ou pagamentos reais. Em 30/10/2026 o usuário autorizou manter Supabase para autenticação real (login/cadastro/sessão). Vagas, reservas, perfis demonstrativos e ganhos continuam locais. Nunca incluir chaves secret/service_role no app ou no Git.
+- Não criar web, HTML/CSS, React DOM, backend, autenticação real, banco remoto ou pagamentos reais.
 - Fontes de requisitos: texto anexado em 04/09/2026 e referências localizadas em `C:\Users\Gabs\Desktop\Organizar\Faculdade\Garagem Pe`: `Garagem_PE_Formulario_e_Mockups.pdf` e cinco PNGs `Garagem_PE_Mockup_1_Inicio.png` a `Garagem_PE_Mockup_5_Painel.png`. PDF de 7 páginas e cinco imagens inspecionados em 09/09/2026; auditoria e renderes em `work/references/`. Só alegar fidelidade final após comparar capturas reais Android com essas fontes.
 - npm e package-lock.json. Usar versões compatíveis com Expo Go Android.
 - Persistir estado versionado em AsyncStorage por serviço central. Imagens locais pelo Expo FileSystem.

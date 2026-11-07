@@ -16,24 +16,6 @@ function legacyFixture() {
 }
 
 describe('local persistence', () => {
-  it('persists the complete vehicle CRUD after each reload without changing booking history', async () => {
-    const initial = await loadState();
-    const vehicle = { id: 'checkpoint-crud', label: 'Onix azul', plate: 'PEQ5A67', type: 'car' as const };
-    await persistState(transition(initial, { type: 'saveVehicle', vehicle }));
-    const created = await loadState();
-    expect(created.vehicles.find(item => item.id === vehicle.id)).toEqual(vehicle);
-
-    await persistState(transition(created, { type: 'saveVehicle', vehicle: { ...vehicle, label: 'Onix prata' } }));
-    const updated = await loadState();
-    expect(updated.vehicles.filter(item => item.id === vehicle.id)).toEqual([{ ...vehicle, label: 'Onix prata' }]);
-
-    await persistState(transition(updated, { type: 'deleteVehicle', id: vehicle.id }));
-    const deleted = await loadState();
-    expect(deleted.vehicles).toEqual(initial.vehicles);
-    expect(deleted.bookings).toEqual(initial.bookings);
-    jest.setSystemTime(new Date('2031-01-01T12:00:00Z'));
-    expect((await loadState()).vehicles.some(item => item.id === vehicle.id)).toBe(false);
-  });
   it('returns complete initial state only when no current or legacy data exists', async () => {
     const initial = createInitialState();
     await expect(loadState()).resolves.toEqual(initial);
