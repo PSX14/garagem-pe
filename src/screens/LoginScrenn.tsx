@@ -6,7 +6,7 @@ import { colors } from '../ui/theme';
 //supabase
 import { supabase } from '../lib/supabase';
 
-type LoginScreenProps = { onBack: () => void; onLogin: () => void; onCreateAccount: () => void };
+type LoginScreenProps = { onBack: () => void; onLogin: (account: { name: string; email: string }) => void; onCreateAccount: () => void };
 
 export function LoginScreen({ onBack, onLogin, onCreateAccount }: LoginScreenProps) {
 	const [email, setEmail] = useState('');
@@ -31,7 +31,7 @@ export function LoginScreen({ onBack, onLogin, onCreateAccount }: LoginScreenPro
 		setLoading(true);
 
 		try {
-			const {error} = await supabase.auth.signInWithPassword({
+			const { data, error } = await supabase.auth.signInWithPassword({
 				email: normalizedEmail,
 				password,
 			});
@@ -42,7 +42,11 @@ export function LoginScreen({ onBack, onLogin, onCreateAccount }: LoginScreenPro
 					'Confira seu e-mail e sua senha. Se acabou de criar a conta, confirme seu e-mail antes de entrar.'
 				); return;
 			}
-			onLogin();
+			const metadataName = data.user?.user_metadata?.full_name;
+			const name = typeof metadataName === 'string' && metadataName.trim().length >= 2
+				? metadataName.trim()
+				: normalizedEmail.split('@')[0] ?? 'Usuário';
+			onLogin({ name, email: data.user?.email ?? normalizedEmail });
 		} catch {
 			Alert.alert(
 				'Erro de conexão',
@@ -98,3 +102,4 @@ const styles = StyleSheet.create({
 	textLink: { alignSelf: 'flex-end', minHeight: 36, justifyContent: 'center' },
 	signup: { justifyContent: 'center', flexWrap: 'wrap' },
 });
+
