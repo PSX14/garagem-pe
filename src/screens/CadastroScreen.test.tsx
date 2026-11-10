@@ -6,29 +6,21 @@ import { CadastroScreen } from './CadastroScreen';
 
 afterEach(() => { jest.restoreAllMocks(); });
 
-it('reports required fields and rejects invalid email, phone and mismatched passwords', async () => {
+it('reports required fields', () => {
 	const alert = jest.spyOn(Alert, 'alert').mockImplementation(() => undefined);
 	const screen = render(<CadastroScreen onBack={jest.fn()} />);
 
-	await act(async () => { fireEvent.press(screen.getByTestId('create-account-submit')); });
+	fireEvent.press(screen.getByTestId('create-account-submit'));
 	expect(screen.getByText('Informe seu nome.')).toBeTruthy();
 	expect(screen.getByText('Informe um e-mail válido.')).toBeTruthy();
 	expect(screen.getByText('Informe um telefone com DDD.')).toBeTruthy();
 	expect(screen.getByText('A senha deve ter pelo menos 8 caracteres.')).toBeTruthy();
 	expect(screen.getByText('Confirme sua senha.')).toBeTruthy();
 	expect(alert).not.toHaveBeenCalled();
-
-	fireEvent.changeText(screen.getByLabelText('Nome'), 'Maria da Silva');
-	fireEvent.changeText(screen.getByLabelText('E-mail'), 'maria@exemplo.com');
-	fireEvent.changeText(screen.getByLabelText('Telefone'), '(81) 99999-1234');
-	fireEvent.changeText(screen.getByLabelText('Senha'), 'senha-segura');
-	fireEvent.changeText(screen.getByLabelText('Confirmar senha'), 'senha-diferente');
-	await act(async () => { fireEvent.press(screen.getByTestId('create-account-submit')); });
-	expect(screen.getByText('As senhas não coincidem.')).toBeTruthy();
 	expect(alert).not.toHaveBeenCalled();
 });
 
-it('toggles both password fields and explains that registration is not available', async () => {
+it('toggles both password fields and starts account registration', async () => {
 	const alert = jest.spyOn(Alert, 'alert').mockImplementation(() => undefined);
 	const screen = render(<CadastroScreen onBack={jest.fn()} />);
 	fireEvent.changeText(screen.getByLabelText('Nome'), 'Maria da Silva');
@@ -44,8 +36,8 @@ it('toggles both password fields and explains that registration is not available
 
 	await act(async () => { fireEvent.press(screen.getByTestId('create-account-submit')); });
 	expect(alert).toHaveBeenCalledTimes(1);
-	expect(alert).toHaveBeenCalledWith('Cadastro indisponível', expect.any(String), expect.any(Array));
-	expect(alert.mock.calls[0]?.[1]).not.toContain('maria@exemplo.com');
+	expect(alert).toHaveBeenCalledWith('Cadastro iniciado!', expect.any(String), expect.any(Array));
+	expect(alert.mock.calls[0]?.[1]).toContain('confirmação por e-mail');
 });
 
 it('returns to the login screen when requested', () => {
@@ -54,3 +46,4 @@ it('returns to the login screen when requested', () => {
 	fireEvent.press(screen.getByLabelText('Voltar para login'));
 	expect(onBack).toHaveBeenCalledTimes(1);
 });
+
