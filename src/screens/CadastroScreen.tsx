@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Alert, Keyboard, Pressable, StyleSheet, TextInput, View } from 'react-native';
-import { BrandLogo, Button, Field, GarageArt, Icon, Notice, Screen, Txt } from '../ui/components';
+import { BrandLogo, Button, Field, GarageArt, Icon, Screen, Txt } from '../ui/components';
 import { colors } from '../ui/theme';
-import {supabase} from '../lib/supabase';
+import { supabase } from '../lib/supabase';
 
 type CadastroScreenProps = { onBack: () => void };
 type FormField = 'name' | 'email' | 'phone' | 'password' | 'confirmation';
@@ -137,7 +137,6 @@ async function submit() {
 			<PasswordField label="Confirmar senha" value={confirmation} visible={confirmationVisible} error={errors.confirmation} onChangeText={value => { setConfirmation(value); setErrors(current => ({ ...current, confirmation: undefined })); }} onToggleVisibility={() => setConfirmationVisible(value => !value)} onSubmitEditing={() => { void submit(); }} />
 			<Button title={loading ? 'Criando uma conta' : 'Criar conta'} icon="user-plus" onPress={submit} testID="create-account-submit" disabled={loading} />
 		</View>
-		{/* <Notice>Protótipo acadêmico: não há criação de conta nem envio ou armazenamento desses dados.</Notice> */}
 	</Screen>;
 }
 
