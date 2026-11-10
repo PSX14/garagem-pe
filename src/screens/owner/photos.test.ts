@@ -1,3 +1,6 @@
+Warning: truncated output (original token count: 1119)
+Total output lines: 67
+
 import { beforeEach, expect, jest, test } from '@jest/globals';
 import * as FileSystem from 'expo-file-system/legacy';
 import * as ImagePicker from 'expo-image-picker';
@@ -18,24 +21,15 @@ test('selected photos are copied from cache into the private persistent director
   jest.mocked(ImagePicker.launchImageLibraryAsync).mockResolvedValue({ canceled: false, assets: [{ uri: 'file:///cache/picked.png', fileName: 'picked.png', width: 10, height: 10 }] });
   const photos = await pickGaragePhotos(0);
   expect(photos).toHaveLength(1);
-  expect(photos[0]).toMatch(/^file:\/\/\/app\/documents\/garagem-pe-photos\/.+\.png$/);
-  expect(FileSystem.copyAsync).toHaveBeenCalledWith({ from: 'file:///cache/picked.png', to: photos[0] });
+  const firstPhoto = photos[0];
+  if (!firstPhoto) throw new Error('A seleção deveria devolver uma foto.');
+  expect(firstPhoto).toMatch(/^file:\/\/\/app\/documents\/garagem-pe-photos\/.+\.png$/);
+  expect(FileSystem.copyAsync).toHaveBeenCalledWith({ from: 'file:///cache/picked.png', to: firstPhoto });
 });
 
 test('denied permission reports an actionable message without opening the picker', async () => {
   jest.mocked(ImagePicker.requestMediaLibraryPermissionsAsync).mockResolvedValue({ granted: false } as Awaited<ReturnType<typeof ImagePicker.requestMediaLibraryPermissionsAsync>>);
-  await expect(pickGaragePhotos(0)).rejects.toThrow('negado');
-  expect(ImagePicker.launchImageLibraryAsync).not.toHaveBeenCalled();
-});
-
-test('cancelling the picker does not create or remove files', async () => {
-  jest.mocked(ImagePicker.launchImageLibraryAsync).mockResolvedValue({ canceled: true, assets: null });
-  expect(await pickGaragePhotos(0)).toEqual([]);
-  expect(FileSystem.copyAsync).not.toHaveBeenCalled();
-  expect(FileSystem.deleteAsync).not.toHaveBeenCalled();
-});
-
-test('the five-photo limit stops another picker launch', async () => {
+  await expect(pickGaragePhotos(0)).…119 tokens truncated…hoto limit stops another picker launch', async () => {
   await expect(pickGaragePhotos(5)).rejects.toThrow('até 5 fotos');
   expect(ImagePicker.launchImageLibraryAsync).not.toHaveBeenCalled();
 });
@@ -62,3 +56,4 @@ test('directory and cleanup failures still return the actionable Portuguese stor
   jest.mocked(FileSystem.deleteAsync).mockRejectedValue(new Error('Delete failed'));
   await expect(pickGaragePhotos(0)).rejects.toThrow('Não foi possível guardar as fotos');
 });
+
