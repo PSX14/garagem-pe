@@ -1,3 +1,6 @@
+Warning: truncated output (original token count: 1583)
+Total output lines: 60
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, useWindowDimensions, View } from 'react-native';
 import { money } from '../../domain/model';
@@ -13,7 +16,7 @@ export function EarningsScreen({ onBooking }: { onBooking?: (id: string) => void
   const [scope, setScope] = useState<'completed' | 'open' | 'all'>('completed');
   const [garageId, setGarageId] = useState('all');
   const { width, fontScale } = useWindowDimensions();
-  const chartRef = useRef<ScrollView>(null);
+  const chartRef = useRef<React.ComponentRef<typeof ScrollView>>(null);
   const columnWidth = Math.max(48 * fontScale, (Math.min(width, 660) - 110) / 6);
   useEffect(() => { chartRef.current?.scrollToEnd({ animated: false }); }, [month]);
   const garages = state.garages.filter(garage => garage.ownerId === 'local');
@@ -24,20 +27,7 @@ export function EarningsScreen({ onBooking }: { onBooking?: (id: string) => void
   const bookings = eligible.filter(booking => monthKey(booking.startAt) === month).sort((a, b) => b.startAt.localeCompare(a.startAt));
   const totals = finances(bookings);
   const chartMonths = recentMonths(new Date(`${month}-15T12:00:00-03:00`), []).reverse();
-  const bars = chartMonths.map(key => ({ key, ...finances(eligible.filter(booking => monthKey(booking.startAt) === key)) }));
-  const max = Math.max(1, ...bars.map(bar => bar.net));
-
-  return <Screen testID="owner-earnings">
-    <Header title="Meus ganhos" subtitle="Uma visão clara de cada reserva." />
-    <ScrollView horizontal style={{ flexGrow: 0 }} showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8, alignItems: 'flex-start' }}>{months.map(key => <Pill key={key} title={monthLabel(key)} selected={month === key} onPress={() => setMonth(key)} />)}</ScrollView>
-    <View style={common.wrap}><Pill title="Concluídos" selected={scope === 'completed'} onPress={() => setScope('completed')} /><Pill title="Previstos" selected={scope === 'open'} onPress={() => setScope('open')} /><Pill title="Todos" selected={scope === 'all'} onPress={() => setScope('all')} /></View>
-    {garages.length > 1 && <View style={common.section}><Txt variant="label">Filtrar por vaga</Txt><View style={common.wrap}><Pill title="Todas as vagas" selected={garageId === 'all'} onPress={() => setGarageId('all')} />{garages.map(garage => <Pill key={garage.id} title={garage.name} selected={garageId === garage.id} onPress={() => setGarageId(garage.id)} />)}</View></View>}
-    <View style={ownerStyles.balance}><Txt variant="label" color={colors.white}>{scope === 'open' ? 'Líquido previsto' : scope === 'all' ? 'Líquido concluído + previsto' : 'Ganhos líquidos concluídos'}</Txt><Txt variant="title" color={colors.white}>{money(totals.net)}</Txt><Txt variant="small" color="#DCE5F1">{monthLabel(month)} · {bookings.length} {bookings.length === 1 ? 'reserva' : 'reservas'}</Txt></View>
-    <Card><MoneyRow label="Ganhos brutos" value={totals.gross} /><MoneyRow label="Comissão da plataforma · 15%" value={totals.commission} /><View style={common.divider} /><MoneyRow label="Seu repasse líquido · 85%" value={totals.net} emphasis /></Card>
-    <Card>
-      <Txt variant="heading">Resumo mensal</Txt>
-      <Txt variant="small" color={colors.muted}>Líquido simulado · 6 meses até o mês selecionado</Txt>
-      <ScrollView ref={chartRef} horizontal style={{ flexGrow: 0 }} contentContainerStyle={styles.chart} onContentSizeChange={() => chartRef.current?.scrollToEnd({ animated: false })} showsHorizontalScrollIndicator={false}>{bars.map(bar => <Pressable key={bar.key} onPress={() => setMonth(bar.key)} accessibilityRole="button" accessibilityLabel={`${monthLabel(bar.key)}: líquido de ${money(bar.net)}. Selecionar mês.`} accessibilityState={{ selected: bar.key === month }} style={[styles.column, { width: columnWidth }]}>
+  const bars = chartMonths.ma…583 tokens truncated…(bar => <Pressable key={bar.key} onPress={() => setMonth(bar.key)} accessibilityRole="button" accessibilityLabel={`${monthLabel(bar.key)}: líquido de ${money(bar.net)}. Selecionar mês.`} accessibilityState={{ selected: bar.key === month }} style={[styles.column, { width: columnWidth }]}>
         <Txt variant="small" style={styles.barAmount}>{money(bar.net)}</Txt>
         <View style={styles.track}><View style={[styles.bar, { height: Math.max(bar.net > 0 ? 5 : 2, bar.net / max * 110), backgroundColor: bar.key === month ? colors.orange : colors.primary }]} /></View>
         <Txt variant="small" color={bar.key === month ? colors.primary : colors.muted}>{monthLabel(bar.key, true)}</Txt>
@@ -57,3 +47,4 @@ const styles = StyleSheet.create({
   bar: { width: '68%', borderRadius: 6 },
   barAmount: { textAlign: 'center', minHeight: 36, width: '100%' },
 });
+
