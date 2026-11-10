@@ -2,6 +2,7 @@ import React, { createContext, useCallback, useContext, useEffect, useRef, useSt
 import { Action, AppState } from '../domain/types';
 import { createInitialState, transition } from '../domain/model';
 import { loadState, persistState } from './persistence';
+import { loadRemoteState, saveRemoteState } from './remoteState';
 
 interface AppContextValue {
   state: AppState | null; loading: boolean; error: string | null;
@@ -17,8 +18,11 @@ export function AppProvider({ children }: React.PropsWithChildren) {
   const [attempt, setAttempt] = useState(0);
   useEffect(() => {
     let alive = true;
-    loadState().then(value => {
-      if (alive) { stateRef.current = value; setState(value); setError(null); }
+    loadState().then(async value => {
+      const remote = await loadRemoteState().catch(() => null);
+      const resolved = remote ?? value;
+      if (!remote) await saveRemoteState(value).catch(() => false);
+      if (alive) { stateRef.current = resolved; setState(resolved); setError(null); }
     }).catch((reason: unknown) => {
       if (alive) setError(reason instanceof Error ? reason.message : 'Não foi possível ler seus dados.');
     }).finally(() => { if (alive) setLoading(false); });
@@ -31,6 +35,7 @@ export function AppProvider({ children }: React.PropsWithChildren) {
       await persistState(next);
       stateRef.current = next;
       setState(next);
+      void saveRemoteState(next).catch(() => undefined);
     });
     queue.current = task.catch(() => undefined);
     return task;
@@ -42,6 +47,7 @@ export function AppProvider({ children }: React.PropsWithChildren) {
       stateRef.current = next;
       setState(next);
       setError(null);
+      void saveRemoteState(next).catch(() => undefined);
     });
     queue.current = task.catch(() => undefined);
     return task;
