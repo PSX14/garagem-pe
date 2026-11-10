@@ -44,22 +44,24 @@ it('toggles password visibility and enters the demo with valid fields', async ()
   await waitFor(() => expect(onLogin).toHaveBeenCalledTimes(1));
 });
 
-it('explains that account creation and password recovery are unavailable', () => {
+it('opens account creation and explains password recovery', () => {
   const onLogin = jest.fn();
+  const onCreateAccount = jest.fn();
   const alert = jest.spyOn(Alert, 'alert').mockImplementation(() => undefined);
 
   const screen = render(
     <LoginScreen
       onBack={jest.fn()}
       onLogin={onLogin}
-      onCreateAccount={jest.fn()}
+      onCreateAccount={onCreateAccount}
     />
   );
 
   fireEvent.press(screen.getByText('Esqueci minha senha'));
   fireEvent.press(screen.getByText('Criar uma conta'));
 
-  expect(alert).toHaveBeenCalled();
+  expect(alert).toHaveBeenCalledWith('Recuperação indisponível', expect.any(String));
+  expect(onCreateAccount).toHaveBeenCalledTimes(1);
 });
 
 
@@ -78,3 +80,4 @@ it('explains that account creation and password recovery are unavailable', () =>
 //   expect(alert).toHaveBeenNthCalledWith(1, 'Recuperação indisponível', expect.any(String));
 //   expect(alert).toHaveBeenNthCalledWith(2, 'Cadastro indisponível', expect.any(String));
 // });
+
